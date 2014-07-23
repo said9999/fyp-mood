@@ -1,5 +1,8 @@
 source 'http://rubygems.org'
 
+#bootstrap 
+gem 'twitter-bootstrap-rails'
+
 #ember js
 gem 'ember-rails'
 gem 'ember-source'
