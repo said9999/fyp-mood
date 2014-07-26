@@ -5,15 +5,15 @@
 		</div>
 	</row>
 	<row>
-		<div class="navbar navbar-inverse col-md-12">
+		<div class="navbar navbar-inverse">
 		  <row>
-	        <div class="navbar-collapse collapse navbar-inverse-collapse col-md-6 col-md-offset-2">
+	        <div class="navbar-collapse collapse navbar-inverse-collapse col-md-8 col-md-offset-1">
 	          <ul class="nav navbar-nav">
 	            <li><a href='#'>Home</a></li>
 	            <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Utility <b class="caret"></b></a>
                       <ul class="dropdown-menu">
-                        <li><a href="#">PANAS</a></li>
+                        <li>{{#link-to 'panas'}}PANAS{{/link-to}}</li>
                         <li><a href="#">SPANE</a></li>
                         <li><a href="#">PAM</a></li>
                       </ul>
@@ -28,5 +28,5 @@
         </div>
 	</row>
 
-{{outlet}}
+	<div class="container-full">{{outlet}}</div>
 </div>

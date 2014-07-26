@@ -19,6 +19,8 @@
 //= require ember-data
 //= require_self
 //= require ./mood
+//= require bootstrap.min
+//= require bootstrap-slider
 
 // for more details see: http://emberjs.com/guides/application/
 Mood = Ember.Application.create();

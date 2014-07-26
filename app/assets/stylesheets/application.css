@@ -10,6 +10,7 @@
  *
  *= require bootstrap.min
  *= require application
+ *= require slider
  */
 
 .header_canvas
@@ -31,3 +32,29 @@
 ul.nav li.dropdown:hover > ul.dropdown-menu {
     display: block;    
 }
+
+.header 
+{
+	border-bottom: 1px solid #eee;
+}
+
+.page-title
+{
+	padding-bottom: 20px;
+}
+
+.photo-panas {
+    width: 50%;
+    margin: 0 auto;
+    vertical-align: center;
+    padding-top: 50px;
+}
+
+.photo-panas-scale{
+	width: 300px;
+	height: auto;
+}
+/*
+.carousel-control.left, .carousel-control.right{ 
+	background: none !important; 
+}*/
