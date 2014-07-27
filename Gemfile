@@ -4,6 +4,9 @@ source 'http://rubygems.org'
 gem 'ember-rails'
 gem 'ember-source'
 
+#rails slider
+gem 'bootstrap-slider-rails'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 

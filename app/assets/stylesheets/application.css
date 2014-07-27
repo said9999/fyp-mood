@@ -10,8 +10,10 @@
  *
  *= require bootstrap.min
  *= require application
- *= require slider
+ *= require bootstrap-slider
  */
+
+
 
 .header_canvas
 {
@@ -27,6 +29,7 @@
 	height: 55px;
 	line-height: 35px;
 	font-size: 150%;
+	padding-top: 10.5px;
 }
 
 ul.nav li.dropdown:hover > ul.dropdown-menu {
@@ -53,6 +56,31 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 .photo-panas-scale{
 	width: 300px;
 	height: auto;
+}
+
+.test-panel{
+
+}
+
+.main-panel{
+	padding-left: 18px;
+}
+
+.panas-test-panel{
+	padding-top: 30px;
+}
+
+.test-photos{
+	width: 400px;
+	height: auto;
+	padding: 30px;
+}
+
+.button-group{
+	margin: 30px;
+}
+.control-btn{
+	margin: 15px;
 }
 /*
 .carousel-control.left, .carousel-control.right{ 

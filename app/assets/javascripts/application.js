@@ -20,9 +20,13 @@
 //= require_self
 //= require ./mood
 //= require bootstrap.min
+
+//= require_tree .
 //= require bootstrap-slider
+
+
 
 // for more details see: http://emberjs.com/guides/application/
 Mood = Ember.Application.create();
 
-//= require_tree .
+
