@@ -30,3 +30,4 @@
 Mood = Ember.Application.create();
 
 
+

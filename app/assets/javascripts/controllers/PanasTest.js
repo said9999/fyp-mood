@@ -8,6 +8,9 @@ Mood.PanasTestController = Ember.ObjectController.extend({
   actions: {
   	nextTest : function(){
   		//alert('in nexttest');
+      //$('#sl1').slider();
+
+
       var score = $('#sl1').slider('getValue');
       this.scores[this.startIndex-1] = score;
 
@@ -21,11 +24,12 @@ Mood.PanasTestController = Ember.ObjectController.extend({
 
   	previousTest : function(){
   		//alert('in previousTest');
+      //$('#sl1').slider();
 
       var score = $('#sl1').slider('getValue');
       this.scores[this.startIndex-1] = score;
 
-      alert(this.scores);
+      //alert(this.scores);
 
   		this.set('startIndex',this.get('startIndex')-1);
       $('#sl1').slider('setValue',this.scores[this.startIndex-1]);
@@ -36,7 +40,8 @@ Mood.PanasTestController = Ember.ObjectController.extend({
   	},
 
     changeBrightness : function(isFromTemplate){
-      alert('inside');
+      //$('#sl1').slider();
+
       var value;
       var per;
       if(isFromTemplate == 'yes'){
@@ -47,10 +52,11 @@ Mood.PanasTestController = Ember.ObjectController.extend({
         per = value/10 + 0.5;
       }
 
-      alert(value);
+      //alert(value);
 
       $('#testPic').css("-webkit-filter","brightness(" + per + ")");
       $('#testPic').css("filter","brightness(" + per + ")");
     }
   }
+
 });
