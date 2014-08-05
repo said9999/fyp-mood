@@ -6,7 +6,7 @@
 			</div>
 
 
-            <div style="width: 250px;" class="slider slider-horizontal">
+            <div style="width: 250px;" class="slider slider-horizontal" {{action 'changeBrightness' 'yes'}}>
             	<div class="slider-track">
             		<div style="left: 0%; width: 50%;" class="slider-selection"></div>
             		<div style="left: 50%;" class="slider-handle round"></div>
@@ -17,14 +17,14 @@
             		<div class="tooltip-arrow"></div><div class="tooltip-inner">Current value: 5</div>
             	</div>
 
-            	<input {{action 'adjustBrightness'}} style="" class="span2" value="4" id="sl1" type="text">
+            	<input style="" class="span2" value="4" id="sl1" type="text">
             </div>
 
             <div class="button-group">
             	<row>
             		<div>
-            			<button {{action 'previousTest'}} class="control-btn btn btn-default">Back</button>
-            			<button {{action 'nextTest'}} class="control-btn btn btn-default">Next</button>
+            			<button id="preBtn" {{action 'previousTest'}} class="control-btn btn btn-default">Back</button>
+            			<button id="nextBtn" {{action 'nextTest'}} class="control-btn btn btn-default">Next</button>
             		</div>
             	</row>
             </div>
@@ -32,16 +32,11 @@
 	</div>
 </row>
 
-<script type="text/javascript">
-      function changeBrightness(per){
-            $('#testPic').css("-webkit-filter","brightness(" + per + ")");
-            alert("brightness(" + per + ")");
-      };
 
-	$('#sl1').slider();
-      $('#sl1').slider().on('slideStop', function(ev){
-            var value = $('#sl1').slider('getValue');
-            per = value/10 + 0.5;
-            changeBrightness(per)
-      });
+<!--###########################
+####    front end javascript
+###############################-->
+
+<script type="text/javascript">
+     $('#sl1').slider();
 </script>

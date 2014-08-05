@@ -3,7 +3,7 @@ Mood.PanasTestController = Ember.ObjectController.extend({
   startIndex : 1,
   imgRootUrl : "assets/panas_photos/",
   imgUrl : "assets/panas_photos/1.jpg", 
-  scores : [5,5,5,5,5,5,5,5,5,5],
+  scores : [1,5,5,5,5,5,5,5,5,5],
 
   actions: {
   	nextTest : function(){
@@ -15,8 +15,7 @@ Mood.PanasTestController = Ember.ObjectController.extend({
       $('#sl1').slider('setValue',this.scores[this.startIndex-1]);
 
   		this.set('imgUrl',this.get('imgRootUrl')+this.get('startIndex')+".jpg");
-
-      this.send('changeBrightness','no')
+ 
   	},
 
   	previousTest : function(){
@@ -31,24 +30,10 @@ Mood.PanasTestController = Ember.ObjectController.extend({
       $('#sl1').slider('setValue',this.scores[this.startIndex-1]);
 
   		this.set('imgUrl',this.get('imgRootUrl')+this.get('startIndex')+".jpg");
-
-      this.send('changeBrightness','no');
   	},
 
-    changeBrightness : function(isFromTemplate){
-      alert('inside');
-      var value;
-      var per;
-      if(isFromTemplate == 'yes'){
-        value = $('#sl1').slider('getValue');
-        per = value/10 + 0.5;
-      }else{
-        value = this.scores[this.startIndex-1];
-        per = value/10 + 0.5;
-      }
-
-      alert(value);
-
+    changeBrightness : function(){
+      var per = this.scores[this.startIndex-1]/10 + 0.5
       $('#testPic').css("-webkit-filter","brightness(" + per + ")");
       $('#testPic').css("filter","brightness(" + per + ")");
     }
