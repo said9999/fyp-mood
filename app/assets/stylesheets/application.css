@@ -82,6 +82,16 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 .control-btn{
 	margin: 15px;
 }
+
+.overlay{
+	color : #04B431;
+	z-index: 99;
+}
+
+#testPic{
+	-webkit-filter: brightness(1.0);
+	filter: brightness(1.0);
+}
 /*
 .carousel-control.left, .carousel-control.right{ 
 	background: none !important; 

@@ -1,8 +1,8 @@
 <row>
 	<div class="panas-test-panel col-md-6 col-md-offset-3">
-		<div class="panel panel-default" align="center">
-			<div>
-				<img {{bind-attr src="imgUrl"}} class="img-circle test-photos">
+		<div class="panel panel-default" align="center" class="overlay">
+			<div class='overlay'>
+				<img id='testPic' {{bind-attr src="imgUrl"}} class="img-circle test-photos">
 			</div>
 
 
@@ -17,7 +17,7 @@
             		<div class="tooltip-arrow"></div><div class="tooltip-inner">Current value: 5</div>
             	</div>
 
-            	<input style="" class="span2" value="4" id="sl1" type="text">
+            	<input {{action 'adjustBrightness'}} style="" class="span2" value="4" id="sl1" type="text">
             </div>
 
             <div class="button-group">
@@ -33,5 +33,15 @@
 </row>
 
 <script type="text/javascript">
+      function changeBrightness(per){
+            $('#testPic').css("-webkit-filter","brightness(" + per + ")");
+            alert("brightness(" + per + ")");
+      };
+
 	$('#sl1').slider();
+      $('#sl1').slider().on('slideStop', function(ev){
+            var value = $('#sl1').slider('getValue');
+            per = value/10 + 0.5;
+            changeBrightness(per)
+      });
 </script>
