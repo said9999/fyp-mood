@@ -4,6 +4,24 @@ Mood.PanasTestController = Ember.ObjectController.extend({
   imgRootUrl : "assets/panas_photos/",
   imgUrl : "assets/panas_photos/1.jpg", 
   scores : [5,5,5,5,5,5,5,5,5,5],
+  tags : ['Upset','Hostile','Alert','Ashamed','Inspired','Nervous','Determined','Attentive','Afraid','Active'],
+  tag : function(){
+    return this.tags[this.startIndex-1];
+  }.property('tags','startIndex'),
+  
+  isFirstPage : function(){
+    if (this.startIndex == 1)
+      return true;
+    return false;
+  }.property('startIndex'),
+
+  isLastPage : function(){
+    if(this.startIndex == 10){
+      return true;
+    }
+
+    return false;
+  }.property('startIndex'),
 
   actions: {
   	nextTest : function(){
@@ -38,6 +56,10 @@ Mood.PanasTestController = Ember.ObjectController.extend({
 
       this.send('changeBrightness','no');
   	},
+
+    submitResult : function(){
+      alert('result submit');
+    },
 
     changeBrightness : function(isFromTemplate){
       //$('#sl1').slider();

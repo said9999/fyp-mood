@@ -1,0 +1,35 @@
+<row>
+	<div class="panas-test-panel col-md-6 col-md-offset-3">
+		<div class="panel panel-default" align="center" class="overlay">
+			<div class='overlay'>
+				<img id='testPic' {{bind-attr src="imgUrl"}} class="img-circle test-photos">
+			</div>
+                  
+                  {{tag}}
+                  {{view Mood.SliderView}}
+
+                  <div class="button-group">
+                  	<row>
+                  		<div>
+                              {{#unless isFirstPage}}
+                  			<button id="preBtn" {{action 'previousTest'}} class="control-btn btn btn-default">
+                                          Back
+                                    </button>
+                              {{/unless}}
+
+                              {{#unless isLastPage}}
+                  			<button id="nextBtn" {{action 'nextTest'}} class="control-btn btn btn-default">Next</button>
+                              {{else}}
+                                    <button id="nextBtn" {{action 'submitResult'}} class="control-btn btn btn-info">Submit</button>
+                              {{/unless}}
+                              
+                              
+                  		</div>
+                  	</row>
+                  </div>
+		</div>
+	</div>
+</row>
+
+
+
