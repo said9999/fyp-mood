@@ -1,17 +1,17 @@
-Mood.PanasTestController = Ember.ObjectController.extend({
+Mood.SpaneTestController = Ember.ObjectController.extend({
   //initial value
   startIndex : 0,
-  imgRootUrl : "assets/panas_photos/",
-  imgUrl : "assets/panas_photos/0.jpg", 
-  tags : ['Upset','Hostile','Alert','Ashamed','Inspired','Nervous','Determined','Attentive','Afraid','Active'],
-  scores : [5,5,5,5,5,5,5,5,5,5],
+  imgRootUrl : "assets/spane_photos/",
+  imgUrl : "assets/spane_photos/0.jpg", 
+  tags : ['Positive','Negative','Good','Bad','Pleasant','Unpleasant','Happy','Sad','Afraid','Joyful','Angry','Contented'],
+  scores : [5,5,5,5,5,5,5,5,5,5,5,5],
   
   progress_per : function(){
-  per = (this.startIndex+1)/this.tags.length;
-  per = per*100;
-  per = per + "%";
+    per = (this.startIndex+1)/this.tags.length;
+    per = per*100;
+    per = per + "%";
 
-  return ("width :" + per); 
+    return ("width :" + per); 
 
   }.property("startIndex"),
 
@@ -26,7 +26,7 @@ Mood.PanasTestController = Ember.ObjectController.extend({
   }.property('startIndex'),
 
   isLastPage : function(){
-    if(this.startIndex == 9) return true;
+    if(this.startIndex == 11) return true;
 
     return false;
   }.property('startIndex'),

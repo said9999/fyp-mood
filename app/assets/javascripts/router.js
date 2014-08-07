@@ -7,6 +7,8 @@ Mood.Router.reopen({
 Mood.Router.map(function() {
   // this.resource('posts');
   //alert('in the router.js');
-  this.route('panas',{path:'/utility/panas'});
-  this.route('panas-test',{path:'/panas-test'})
+  this.route('panas',{path : '/utility/panas'});
+  this.route('spane',{path : '/utility/spane'});
+  this.route('panas-test',{path :'/panas-test'});
+  this.route('spane-test',{path : '/spane-test'})
 });

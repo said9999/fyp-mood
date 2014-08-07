@@ -92,6 +92,10 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 	-webkit-filter: brightness(1.0);
 	filter: brightness(1.0);
 }
+
+.test-progressbar{
+	margin-top: -22px;
+}
 /*
 .carousel-control.left, .carousel-control.right{ 
 	background: none !important; 
