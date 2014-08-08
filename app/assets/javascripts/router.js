@@ -9,6 +9,8 @@ Mood.Router.map(function() {
   //alert('in the router.js');
   this.route('panas',{path : '/utility/panas'});
   this.route('spane',{path : '/utility/spane'});
+  this.route('pam',{path : '/utility/pam'});
   this.route('panas-test',{path :'/panas-test'});
-  this.route('spane-test',{path : '/spane-test'})
+  this.route('spane-test',{path : '/spane-test'});
+  this.route('pam-test', {path : '/pam-test'})
 });
