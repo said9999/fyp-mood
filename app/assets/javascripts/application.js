@@ -29,7 +29,7 @@
 // for more details see: http://emberjs.com/guides/application/
 Mood = Ember.Application.create();
 
-Handlebars.registerHelper('mod3',function(v0,options){
+Handlebars.registerHelper('mod',function(v0,options){
 		alert(v0);
 		var v1 = Handlebars.Utils.escapeExpression(v0);
 
