@@ -1,0 +1,10 @@
+{{#each test}}
+		{{this}}
+		{{#mod3 this}}
+			mod3
+		{{else}}
+			not mod3
+		{{/mod3}}
+	{{/each}}
+
+	{{#link-to 'pam-test'}}here{{/link-to}}

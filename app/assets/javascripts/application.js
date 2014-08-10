@@ -29,5 +29,17 @@
 // for more details see: http://emberjs.com/guides/application/
 Mood = Ember.Application.create();
 
+Handlebars.registerHelper('mod3',function(v0,options){
+		alert(v0);
+		var v1 = Handlebars.Utils.escapeExpression(v0);
+
+		alert(v1);
+		v1=1;
+		if (v1%3==0)
+			return options.fn(this);
+		else
+			return options.inverse(this);
+});
+
 
 
