@@ -107,6 +107,10 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 .newset{
 	margin-left: 20px;
 }
+
+.galleryDiv{
+	min-width: 270px;
+}
 /*
 .carousel-control.left, .carousel-control.right{ 
 	background: none !important; 
