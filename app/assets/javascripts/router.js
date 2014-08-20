@@ -12,5 +12,6 @@ Mood.Router.map(function() {
   this.route('pam',{path : '/utility/pam'});
   this.route('panas-test',{path :'/panas-test'});
   this.route('spane-test',{path : '/spane-test'});
-  this.route('pam-test', {path : '/pam-test'})
+  this.route('pam-test', {path : '/pam-test'});
+  this.route('graph',{path : '/history'})
 });
