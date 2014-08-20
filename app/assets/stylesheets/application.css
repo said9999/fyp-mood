@@ -61,10 +61,10 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 .test-panel{
 
 }
-
+/*
 .main-panel{
 	padding-left: 18px;
-}
+}*/
 
 .panas-test-panel{
 	padding-top: 30px;
@@ -110,6 +110,11 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 
 .galleryDiv{
 	min-width: 270px;
+}
+
+.sidebar-menu{
+	height: 500px;
+	background: #F8F8F8 ;
 }
 /*
 .carousel-control.left, .carousel-control.right{ 
