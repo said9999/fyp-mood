@@ -2,13 +2,13 @@ Mood.GraphController = Ember.ObjectController.extend({
   
   actions : {
   	displayLineChart : function(){
-  		alert('line chart');
+  		//alert('line chart');
   		//google.load("visualization", "1", {packages:["corechart"]});
 		drawLineChart();
   	},
 
   	displayPieChart : function(){
-  		alert('pie chart');
+  		//alert('pie chart');
   		drawPieChart();
   	}
   }	

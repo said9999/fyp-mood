@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+gem 'faker'
+
 #ember js
 gem 'ember-rails'
 gem 'ember-source'
