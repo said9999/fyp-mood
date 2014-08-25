@@ -115,6 +115,18 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 .sidebar-menu{
 	height: 500px;
 	background: #F8F8F8 ;
+
+}
+
+.sidebar-menu-title{
+	margin-top: 10px;
+	margin-left: 5px;
+	font-size: 90%;
+}
+
+.category-bar{
+	margin-bottom: 10px;
+	border-color: white !important;
 }
 /*
 .carousel-control.left, .carousel-control.right{ 

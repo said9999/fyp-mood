@@ -1,6 +1,15 @@
 Mood.GraphController = Ember.ObjectController.extend({
-  
+  test_type : "",
+  graph_type : "",
+
   actions : {
+  	getGraph : function(){
+  		this.set('test_type',$('#test').val());
+  		this.set('graph_type',$('#graph').val());
+  		alert(this.test_type);
+  		alert(this.graph_type);
+  	},
+
   	displayLineChart : function(){
   		//alert('line chart');
   		//google.load("visualization", "1", {packages:["corechart"]});
@@ -18,13 +27,14 @@ Mood.GraphController = Ember.ObjectController.extend({
 function dataLoad(drawChart){
 	$.post("data_access/panas",{email:"jyx@gmail.com"})
 		.done(function(data){
-			alert(data['history']);
+			//alert(data['history']);
 			drawChart(data['history']);
 		});
 }
 
 function drawLineChart(data) {
-	alert(data[0]['score']);
+	//alert(this.test-type);
+	//alert(data[0]['score']);
 	var arrayData = [];
 	arrayData.push(['Time','Scores']);
 

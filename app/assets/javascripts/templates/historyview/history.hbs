@@ -1,12 +1,26 @@
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
+	
 		<div class="row">
 			
-			<div class="col-md-2 sidebar-menu btn-group-vertical">
-				<button type="button" class="btn btn-default btn-block" {{action displayLineChart}} >Line Chart</button>
-				<button type="button" class="btn btn-default" {{action displayPieChart}}>Pie Chart</button>
-				<button type="button" class="btn btn-default">Button</button>
-				<button type="button" class="btn btn-default">Button</button>
+			<div class="col-md-2 sidebar-menu">
+
+				<select class="form-control" style='margin-top:5px' id='test'>
+				  <option value="" selected disabled>Test Category</option>
+				  <option>PAM</option>
+				  <option>SPANE</option>
+				  <option>PANAS</option>
+				</select>
+
+				
+				<select class="form-control" style='margin-top:5px' id='graph'>
+				  <option value="" selected disabled>Graph Category</option>
+				  <option>Line Chart</option>
+				  <option>Pie Chart</option>
+				</select>
+
+				<button type="button" class="btn btn-success btn-sm" style="margin-top:20px; float:right" {{action 'getGraph'}}>Go!</button>
+				
 			</div>
 			
 
