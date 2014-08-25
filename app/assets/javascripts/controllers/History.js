@@ -4,7 +4,8 @@ Mood.GraphController = Ember.ObjectController.extend({
   	displayLineChart : function(){
   		//alert('line chart');
   		//google.load("visualization", "1", {packages:["corechart"]});
-		drawLineChart();
+		//drawLineChart();
+		dataLoad(drawLineChart)
   	},
 
   	displayPieChart : function(){
@@ -14,18 +15,31 @@ Mood.GraphController = Ember.ObjectController.extend({
   }	
 });
 
+function dataLoad(drawChart){
+	$.post("data_access/panas",{email:"jyx@gmail.com"})
+		.done(function(data){
+			alert(data['history']);
+			drawChart(data['history']);
+		});
+}
 
-function drawLineChart() {
-	var data = google.visualization.arrayToDataTable([
-	  ['Year', 'Sales', 'Expenses'],
-	  ['2004',  1000,      400],
-	  ['2005',  1170,      460],
-	  ['2006',  660,       1120],
-	  ['2007',  1030,      540]
-	]);
+function drawLineChart(data) {
+	alert(data[0]['score']);
+	var arrayData = [];
+	arrayData.push(['Time','Scores']);
+
+	for(var i=0;i<data.length;i++){
+		row = data[i];
+		time = row['time'];
+		score = row['score'];
+
+		arrayData.push([time,score]);
+	}
+
+	var data = google.visualization.arrayToDataTable(arrayData);
 
 	var options = {
-	  title: 'Company Performance'
+	  title: 'PANAS History Records'
 	};
 
 	var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
