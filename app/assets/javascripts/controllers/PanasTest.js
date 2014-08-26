@@ -7,11 +7,11 @@ Mood.PanasTestController = Ember.ObjectController.extend({
   scores : [5,5,5,5,5,5,5,5,5,5],
   
   progress_per : function(){
-  per = (this.startIndex+1)/this.tags.length;
-  per = per*100;
-  per = per + "%";
+    per = (this.startIndex+1)/this.tags.length;
+    per = per*100;
+    per = per + "%";
 
-  return ("width :" + per); 
+    return ("width :" + per); 
 
   }.property("startIndex"),
 
@@ -33,6 +33,9 @@ Mood.PanasTestController = Ember.ObjectController.extend({
 
   actions: {
     changeTest : function(sign){
+      alert(sign);
+      alert(this.startIndex);
+
       var offset;
       
       if(sign == '+')
