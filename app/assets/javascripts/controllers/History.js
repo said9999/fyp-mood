@@ -1,3 +1,6 @@
+var TypeUrlMap = {'PANAS':'/data_access/panas','SPANE':'/data_access/spane','PAM':'/data_access/pam'};
+var GraphDrawMap = {'Line Chart':drawLineChart,'Pie Chart':drawPieChart};
+
 Mood.GraphController = Ember.ObjectController.extend({
   test_type : "",
   graph_type : "",
@@ -6,35 +9,32 @@ Mood.GraphController = Ember.ObjectController.extend({
   	getGraph : function(){
   		this.set('test_type',$('#test').val());
   		this.set('graph_type',$('#graph').val());
-  		alert(this.test_type);
-  		alert(this.graph_type);
+
+      var url = TypeUrlMap[$('#test').val()];
+      var func = GraphDrawMap[$('#graph').val()];
+      var email = "jyx@gmail.com";
+
+      dataLoad(url,func,email);
   	},
 
   	displayLineChart : function(){
-  		//alert('line chart');
-  		//google.load("visualization", "1", {packages:["corechart"]});
-		//drawLineChart();
-		dataLoad(drawLineChart)
+		  dataLoad(drawLineChart)
   	},
 
   	displayPieChart : function(){
-  		//alert('pie chart');
   		drawPieChart();
   	}
   }	
 });
 
-function dataLoad(drawChart){
-	$.post("data_access/panas",{email:"jyx@gmail.com"})
+function dataLoad(url,drawChart,mail_addr){
+	$.post(url,{email:mail_addr})
 		.done(function(data){
-			//alert(data['history']);
 			drawChart(data['history']);
 		});
 }
 
 function drawLineChart(data) {
-	//alert(this.test-type);
-	//alert(data[0]['score']);
 	var arrayData = [];
 	arrayData.push(['Time','Scores']);
 
@@ -56,20 +56,42 @@ function drawLineChart(data) {
 	chart.draw(data, options);
 };
 
-function drawPieChart(){
-	var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
-        ]);
+function drawPieChart(data){
+  var arrayData = [];
+  arrayData.push(['Mood','frequency']);
 
-    var options = {
-      title: 'My Daily Activities'
-    };
+  var mood_low = 0; // <20)
+  var mood_normal = 0; //[20-30)
+  var mood_good = 0; //[30-40)
+  var mood_great = 0; //[40-50)
+  for(var i=0;i<data.length;i++){
+    row = data[i];
+    score = row['score'];
+    alert(score);
 
-    var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-    chart.draw(data, options);
+    if(score < 20)
+      mood_low++;
+    else if (score>=20 && score<30)
+      mood_normal++;
+    else if (score>=30 && score<40)
+      mood_good++;
+    else if (score>=40)
+      mood_great++;
+  }
+
+  arrayData.push(['Low',mood_low]);
+  arrayData.push(['Normal',mood_normal]);
+  arrayData.push(['Good',mood_good]);
+  arrayData.push(['Great',mood_great]);
+
+  alert(arrayData);
+
+	var data = google.visualization.arrayToDataTable(arrayData);
+
+  var options = {
+    title: 'My Daily Mood'
+  };
+
+  var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+  chart.draw(data, options);
 };

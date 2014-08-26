@@ -1,9 +1,9 @@
 Mood.HistoryView = Ember.View.extend({
 	templateName : 'historyview/history',
 
-	drawChart:function(){
-		drawChart();
-	}.on("didInsertElement"),
+	//drawChart:function(){
+	//	drawChart();
+	//}.on("didInsertElement"),
 
 	didInsertElement: function(){ 
 	 
