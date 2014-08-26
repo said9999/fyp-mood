@@ -63,5 +63,18 @@ Mood.PamGalleryView = Ember.View.extend({
 	 		var array = randomPhotos();
 	 		replacePhotos(array);
 	 	});
+
+	 	/********************
+	 	    click and submit
+	 	 ********************/
+	 	 $('.galleryPic').click(function(){
+	 	 	var src = $(this).attr('src');
+	 	 	var photo_id = src.split("/")[2].split(".")[0]; //src = assets/photos/3.jpg
+	 	 	
+	 	 	var score = photo_id*2;
+	 	 	var mail_addr = "jyx@gmail.com"
+
+	 	 	$.post("data_update/pam",{email:mail_addr,total_score:score});
+	 	 });
 	}
 });

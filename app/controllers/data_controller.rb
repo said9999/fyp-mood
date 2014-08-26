@@ -3,7 +3,7 @@ class DataController < ApplicationController
 		email = params[:email]
 		type = params[:type]
 
-		spane_history = History.where(email:email,test_type: type)
+		spane_history = History.where(email:email,test_type: type).order("time DESC")
 
 		render :json => {'history' => spane_history}
 	end
@@ -20,7 +20,7 @@ class DataController < ApplicationController
 		if record.nil?
 			user.histories.create(:email => mail_addr, 
 				:score=>score, 
-				:test_type=>'panas', 
+				:test_type=>type, 
 				:time=>Time.now)
 		else
 			record['score'] = score
