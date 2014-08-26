@@ -59,7 +59,17 @@ Mood.PanasTestController = Ember.ObjectController.extend({
     },
 
     submitResult : function(){
-      alert('result submit');
+      var score = 0;
+      for(var i=0;i<this.scores.length;i++){
+        score+= this.scores[i];
+      }
+
+      mail_addr = "jyx@gmail.com"
+
+      $.post('/data_update/panas',{total_score:score,email:mail_addr})
+        .done(function(){
+           alert('result submit successfully');
+        });
     },
 
     changeBrightness : function(isFromTemplate){

@@ -2,9 +2,8 @@ Mood::Application.routes.draw do
   #get "home/index"
   root to: 'home#index'
 
-  post '/data_access/panas', to:'data#panas' 
-  post '/data_access/pam', to:'data#pam'
-  post '/data_access/spane', to:'data#spane'
+  post '/data_access/:type', to:'data#read' 
+  post '/data_update/:type', to: 'data#update'
 
   get '*path',to: 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
