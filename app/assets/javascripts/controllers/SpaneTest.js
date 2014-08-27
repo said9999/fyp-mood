@@ -56,7 +56,20 @@ Mood.SpaneTestController = Ember.ObjectController.extend({
     },
 
     submitResult : function(){
-      alert('result submit');
+      var score = 0;
+      for(var i=0;i<this.scores.length;i++){
+        score+= this.scores[i];
+      }
+      mail_addr = "jyx@gmail.com"
+
+      var that=this;
+
+      $.post('/data_update/spane',{total_score:score,email:mail_addr})
+        .done(function(){
+           alert('result submit successfully');
+           that.transitionToRoute('submit_success');
+        });
+
     },
 
     changeBrightness : function(isFromTemplate){

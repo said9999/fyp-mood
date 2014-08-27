@@ -67,7 +67,7 @@ function drawPieChart(data){
   for(var i=0;i<data.length;i++){
     row = data[i];
     score = row['score'];
-    alert(score);
+    //alert(score);
 
     if(score < 20)
       mood_low++;
@@ -84,7 +84,7 @@ function drawPieChart(data){
   arrayData.push(['Good',mood_good]);
   arrayData.push(['Great',mood_great]);
 
-  alert(arrayData);
+  //alert(arrayData);
 
 	var data = google.visualization.arrayToDataTable(arrayData);
 

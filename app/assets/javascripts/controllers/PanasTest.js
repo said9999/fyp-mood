@@ -33,8 +33,8 @@ Mood.PanasTestController = Ember.ObjectController.extend({
 
   actions: {
     changeTest : function(sign){
-      alert(sign);
-      alert(this.startIndex);
+      //alert(sign);
+      //alert(this.startIndex);
 
       var offset;
       
@@ -66,9 +66,11 @@ Mood.PanasTestController = Ember.ObjectController.extend({
 
       mail_addr = "jyx@gmail.com"
 
+      var that = this;
       $.post('/data_update/panas',{total_score:score,email:mail_addr})
         .done(function(){
            alert('result submit successfully');
+           that.transitionToRoute('submit_success');
         });
     },
 

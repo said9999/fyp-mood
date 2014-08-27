@@ -67,6 +67,7 @@ Mood.PamGalleryView = Ember.View.extend({
 	 	/********************
 	 	    click and submit
 	 	 ********************/
+	 	 var that = this;
 	 	 $('.galleryPic').click(function(){
 	 	 	var src = $(this).attr('src');
 	 	 	var photo_id = src.split("/")[2].split(".")[0]; //src = assets/photos/3.jpg
@@ -74,7 +75,11 @@ Mood.PamGalleryView = Ember.View.extend({
 	 	 	var score = photo_id*2;
 	 	 	var mail_addr = "jyx@gmail.com"
 
-	 	 	$.post("data_update/pam",{email:mail_addr,total_score:score});
+	 	 	var controller = that.get('controller');
+	 	 	$.post("data_update/pam",{email:mail_addr,total_score:score})
+	 	 		.done(function(){
+	 	 			controller.transitionToRoute('submit_success');
+	 	 		});
 	 	 });
 	}
 });
