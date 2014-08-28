@@ -14,15 +14,65 @@
  */
 
 
+/**********************
+	login page css
+**********************/
+.login-brand{
+	font-size: 200%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: #393938;
+}
 
+.login-header{
+	background-color: #eff1ec;
+}
+
+.login-panel-wrapper{
+	background-color: #393938;
+}
+
+.login-panel{
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
+.login-intro{
+	line-height: 550%;
+}
+
+.login-text{
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+.login-button{
+	margin-top: 25px;
+	
+}
+
+.login-font{
+	font-size: 500%;
+	color: #f8f5ed;
+}
+
+.sign-in-text{
+	margin-top: 20px;
+	color: #eff1ec;
+	float: right;
+}
+
+/*********************
+ 	navigation bar css
+ *********************/
 .header_canvas
 {
 	text-align: center;
 	height: 100px;
-	background-color: #6d98ff;
+	background-color:  #eff1ec;
 	padding: 10px;
 	font-size: 400%;
-	color: #ffffff
+	color: #393938;
 }
 
 .navbar-nav>li>a{
