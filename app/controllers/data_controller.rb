@@ -1,4 +1,8 @@
+
+
 class DataController < ApplicationController
+	require 'securerandom'
+
 	def read
 		email = params[:email]
 		type = params[:type]
@@ -28,6 +32,27 @@ class DataController < ApplicationController
 		end
 
 		render status: 200,json: {'msg' => 'success'}
+	end
+
+	def sign_in
+		puts "sign in!!!!"
+		email = params[:email]
+		psw = params[:psw]
+
+		usr = User.find_by(email: email, psw: psw)
+
+		unless usr.nil?
+			puts "not nil"
+			hash = SecureRandom.hex
+			puts hash
+			usr.access_key = hash
+			usr.save
+			
+			puts"going to render"
+			render :json => {'valid'=>'yes','email'=>email,'access_key'=>hash}
+		else
+			render :json => {'valid'=>'no'}
+		end 
 	end
 
 end

@@ -2,6 +2,7 @@ Mood::Application.routes.draw do
   #get "home/index"
   root to: 'home#index'
 
+  post '/sign_in', to:'data#sign_in'
   post '/data_access/:type', to:'data#read' 
   post '/data_update/:type', to: 'data#update'
 

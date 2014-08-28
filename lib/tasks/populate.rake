@@ -8,7 +8,8 @@ namespace :db do
 		#create first user userdata
 		User.create!(:email=>'jyx@gmail.com', 
 			:name => 'piange',
-			:psw => '91091699'
+			:psw => '91091699',
+			:access_key => ''
 			)
 
 		#create dummy data for first user

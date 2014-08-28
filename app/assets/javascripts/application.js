@@ -26,6 +26,7 @@
 
 
 
+
 // for more details see: http://emberjs.com/guides/application/
 Mood = Ember.Application.create();
 

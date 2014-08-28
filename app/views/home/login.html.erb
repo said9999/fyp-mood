@@ -24,7 +24,7 @@
 							<input type="text" class="form-control login-text" placeholder="User Name" id='input-name'>
 							<input type="text" class="form-control login-text" placeholder="Email" id='input-email'>
 							<input type="text" class="form-control login-text" placeholder="Password" id='input-password'>
-							<button type="button" class="btn btn-success btn-block login-button">Sign up for MoodScale</button>
+							<button type="button" id='sign-up' class="btn btn-success btn-block login-button">Sign up for MoodScale</button>
 
 							<div class='sign-in-text'>already have an account?
 							<a href='' data-toggle="modal" data-target="#myModal"> sign in</a></div>
@@ -58,13 +58,36 @@
 			</div>
 			
 			<div class="modal-body" >
-		   		<input type="text" class="form-control login-text" placeholder="Email" id='sign-email'>
-		   		<input type="text" class="form-control login-text" placeholder="Password" id='sign-password'>
+		   		<input type="text" class="form-control login-text" placeholder="Email" id='sign-in-email'>
+		   		<input type="text" class="form-control login-text" placeholder="Password" id='sign-in-password'>
 		  	</div>
 
 			<div class="modal-footer">
-				<button type="button" class="btn btn-success">Sign in</button>
+				<button type="button" id='sign-in' class="btn btn-success">Sign in</button>
 			</div>
 		</div>
 	</div>
 </div>
+
+
+<!--##################
+	javascript for sign-up and sign in
+######################-->
+
+<script type="text/javascript">
+	$('#sign-in').click(function(){
+		var email = $('#sign-in-email').val();
+		var psw = $('#sign-in-password').val();
+		
+		$.post('/sign_in',{email:email,psw:psw})
+		.done(function(data){
+			if(data['valid']=='yes'){
+				alert('valid!');
+			}else{
+				alert('invalid email or psw');
+			}
+		});
+	})
+</script>
+
+

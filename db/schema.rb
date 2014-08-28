@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140825130529) do
     t.string   "name"
     t.string   "email"
     t.string   "psw"
+    t.string   "access_key"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
