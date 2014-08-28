@@ -55,4 +55,17 @@ class DataController < ApplicationController
 		end 
 	end
 
+	def valid_user
+		email = params[:email]
+		access_key = params[:access_key]
+
+		user = User.find_by(email: email,access_key: access_key)
+
+		unless user.nil?
+			render :json => {'valid'=>'yes'}
+		else
+			render :json => {'valid'=>no}
+		end
+	end
+
 end

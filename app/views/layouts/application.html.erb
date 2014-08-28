@@ -9,6 +9,34 @@
   <script type="text/javascript">
   	google.load("visualization", "1", {packages:["corechart"]});
   </script>
+
+  <script type="text/javascript">
+
+
+  	var href = window.location.href;
+  	var param = href.split('//')[1].split('/')[1]
+
+  	//alert(param);
+
+  	if (param != 'login'){
+  		var login_page_url = "http://" + href.split('//')[1].split('/')[0] + "/login"
+
+  		var email = getCookie('email');
+  		var access_key = getCookie('access_key');
+
+  		if (email == "" || access_key == ""){
+  			window.location.replace(login_page_url);
+  		}else{
+  			$.post("valid_user",{email:email,access_key:access_key})
+  			.done(function(data){
+  				if (data['valid'] == 'no'){
+  					//alert(data['valid']);
+  					window.location.replace(login_page_url);
+  				}
+  			});
+  		}
+  	}
+  </script>
   
   <%= csrf_meta_tags %>
 </head>

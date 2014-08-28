@@ -90,6 +90,12 @@
 			if(data['valid']=='yes'){
 				var domain = window.location.href.split('//')[1].split('/')[0];
 				window.location.replace('http://'+domain);
+
+				var email = data['email'];
+				var access_key = data['access_key'];
+
+				setCookie('email',email,1);
+				setCookie('access_key',access_key,1);
 			}else{
 				$('#error').append('Oops,invalid email or password');
 				$('#error').addClass('error-div');

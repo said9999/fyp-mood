@@ -5,6 +5,7 @@ Mood::Application.routes.draw do
   post '/sign_in', to:'data#sign_in'
   post '/data_access/:type', to:'data#read' 
   post '/data_update/:type', to: 'data#update'
+  post '/valid_user', to: 'data#valid_user'
 
   match 'login', to: 'home#login', via: [:get]
 
