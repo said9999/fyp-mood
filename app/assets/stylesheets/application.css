@@ -62,6 +62,13 @@
 	float: right;
 }
 
+.error-div{
+	background-color: #f83b28;
+	padding-left: 10px;
+	color : #eff1ec;
+	opacity: 0.8;
+}
+
 /*********************
  	navigation bar css
  *********************/

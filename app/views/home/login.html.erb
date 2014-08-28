@@ -23,11 +23,11 @@
 						<div class="col-md-4 login-tools">
 							<input type="text" class="form-control login-text" placeholder="User Name" id='input-name'>
 							<input type="text" class="form-control login-text" placeholder="Email" id='input-email'>
-							<input type="text" class="form-control login-text" placeholder="Password" id='input-password'>
+							<input type="password" class="form-control login-text" placeholder="Password" id='input-password'>
 							<button type="button" id='sign-up' class="btn btn-success btn-block login-button">Sign up for MoodScale</button>
-
+							
 							<div class='sign-in-text'>already have an account?
-							<a href='' data-toggle="modal" data-target="#myModal"> sign in</a></div>
+							<a href='' id='sign-in-href' data-toggle="modal" data-target="#myModal"> sign in</a></div>
 						</div>
 					</div>
 				</div>
@@ -59,7 +59,8 @@
 			
 			<div class="modal-body" >
 		   		<input type="text" class="form-control login-text" placeholder="Email" id='sign-in-email'>
-		   		<input type="text" class="form-control login-text" placeholder="Password" id='sign-in-password'>
+		   		<input type="password" class="form-control login-text" placeholder="Password" id='sign-in-password'>
+		   		<div id='error'></div>
 		  	</div>
 
 			<div class="modal-footer">
@@ -75,6 +76,11 @@
 ######################-->
 
 <script type="text/javascript">
+	$('#sign-in-href').click(function(){
+		$('#error').empty();
+		$('#error').removeClass();
+	});
+
 	$('#sign-in').click(function(){
 		var email = $('#sign-in-email').val();
 		var psw = $('#sign-in-password').val();
@@ -82,9 +88,11 @@
 		$.post('/sign_in',{email:email,psw:psw})
 		.done(function(data){
 			if(data['valid']=='yes'){
-				alert('valid!');
+				var domain = window.location.href.split('//')[1].split('/')[0];
+				window.location.replace('http://'+domain);
 			}else{
-				alert('invalid email or psw');
+				$('#error').append('Oops,invalid email or password');
+				$('#error').addClass('error-div');
 			}
 		});
 	})

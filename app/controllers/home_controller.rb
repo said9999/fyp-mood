@@ -9,4 +9,7 @@ class HomeController < ApplicationController
 
   def create
   end
+
+  def ember
+  end
 end

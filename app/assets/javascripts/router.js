@@ -15,4 +15,5 @@ Mood.Router.map(function() {
   this.route('pam-test', {path : '/pam-test'});
   this.route('graph',{path : '/history'});
   this.route('submit_success',{path : '/submit_success'})
+  this.route('',{path:'*path'})
 });

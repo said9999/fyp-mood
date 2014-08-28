@@ -1,13 +1,15 @@
 Mood::Application.routes.draw do
   #get "home/index"
-  root to: 'home#index'
+  
 
   post '/sign_in', to:'data#sign_in'
   post '/data_access/:type', to:'data#read' 
   post '/data_update/:type', to: 'data#update'
 
-  get '/login', to: 'home#login'
-  get '*path',to: 'home#index'
+  match 'login', to: 'home#login', via: [:get]
+
+  root to: 'home#index'
+  get '*path',to: 'home#ember'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
