@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem 'therubyracer'
 gem 'faker'
 
 #ember js
