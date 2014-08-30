@@ -13,6 +13,14 @@
  *= require bootstrap-slider
  */
 
+/*********************
+  general use css
+ *********************/
+ .no-padding{
+ 	padding: 0 !important;
+ 	margin: 0 !important;
+ }
+
 
 /**********************
 	login page css
@@ -154,15 +162,19 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 	margin-top: -22px;
 }
 
+
 .galleryPic{
-	width: 280px;
+	width: 100%;
 	height: auto;
+	padding-left: 5px;
+	padding-right: 5px;
+
 	margin-bottom: 10px;
-	padding-left: 20px;
 }
 
 .newset{
-	margin-left: 20px;
+	padding-right: 5px;
+	padding-left: 5px;
 }
 
 .galleryDiv{

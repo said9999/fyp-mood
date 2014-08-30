@@ -90,7 +90,7 @@ Mood.PanasTestController = Ember.ObjectController.extend({
       //alert(value);
 
       $('#testPic').css("-webkit-filter","brightness(" + per + ")");
-      $('#testPic').css("filter","brightness(" + per + ")");
+     // $('#testPic').css("filter","brightness(" + per + ")");
     }
   }
 
