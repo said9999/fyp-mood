@@ -76,11 +76,45 @@
 ######################-->
 
 <script type="text/javascript">
+	//functions
+	function directToUserPage(data){
+		var email = data['email'];
+		var access_key = data['access_key'];
+
+		setCookie('email',email,1);
+		setCookie('access_key',access_key,1);
+
+		var domain = window.location.href.split('//')[1].split('/')[0];
+		window.location.replace('http://'+domain);
+	}
+
+	//hide error msg control
 	$('#sign-in-href').click(function(){
 		$('#error').empty();
 		$('#error').removeClass();
 	});
 
+	//sign up control
+	$('#sign-up').click(function(){
+		alert('click');
+		var name = $('#input-name').val();
+		var email = $('#input-email').val();
+		var psw = $('#input-password').val();
+
+		alert('here');
+		$.post('/sign_up',{name:name,email:email,psw:psw})
+			.done(function(data){
+				if (data['valid']== 'no'){
+					alert('this email has been registered before');
+				}else if(data['valid']== 'yes'){
+					directToUserPage(data);
+				}else{
+					alert('unknown error in sign up');
+				}
+			});
+	});
+
+	//sign in control
 	$('#sign-in').click(function(){
 		var email = $('#sign-in-email').val();
 		var psw = $('#sign-in-password').val();
@@ -88,14 +122,7 @@
 		$.post('/sign_in',{email:email,psw:psw})
 		.done(function(data){
 			if(data['valid']=='yes'){
-				var domain = window.location.href.split('//')[1].split('/')[0];
-				window.location.replace('http://'+domain);
-
-				var email = data['email'];
-				var access_key = data['access_key'];
-
-				setCookie('email',email,1);
-				setCookie('access_key',access_key,1);
+				directToUserPage(data);
 			}else{
 				$('#error').append('Oops,invalid email or password');
 				$('#error').addClass('error-div');

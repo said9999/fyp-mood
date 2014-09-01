@@ -55,6 +55,26 @@ class DataController < ApplicationController
 		end 
 	end
 
+	def sign_up
+		name = params[:name]
+		email = params[:email]
+		psw = params[:psw]
+
+		e = User.find_by(email: email);
+		unless (e.nil?)
+			render :json => {'valid' => 'no'} 
+		else
+			hash = SecureRandom.hex
+			User.create!(:name => name,
+				:email => email,
+				:psw => psw,
+				:access_key => hash
+				)
+
+			render :json => {'valid' => 'yes','email'=>email,'access_key'=>hash}
+		end
+	end
+
 	def valid_user
 		email = params[:email]
 		access_key = params[:access_key]

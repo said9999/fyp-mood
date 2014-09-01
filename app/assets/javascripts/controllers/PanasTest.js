@@ -64,7 +64,7 @@ Mood.PanasTestController = Ember.ObjectController.extend({
         score+= this.scores[i];
       }
 
-      mail_addr = "jyx@gmail.com"
+      mail_addr = getCookie('email');
 
       var that = this;
       $.post('/data_update/panas',{total_score:score,email:mail_addr})

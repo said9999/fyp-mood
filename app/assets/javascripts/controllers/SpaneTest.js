@@ -60,7 +60,7 @@ Mood.SpaneTestController = Ember.ObjectController.extend({
       for(var i=0;i<this.scores.length;i++){
         score+= this.scores[i];
       }
-      mail_addr = "jyx@gmail.com"
+      mail_addr = getCookie('email');
 
       var that=this;
 

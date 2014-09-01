@@ -12,7 +12,7 @@ Mood.GraphController = Ember.ObjectController.extend({
 
       var url = TypeUrlMap[$('#test').val()];
       var func = GraphDrawMap[$('#graph').val()];
-      var email = "jyx@gmail.com";
+      var email = getCookie('email');
 
       dataLoad(url,func,email);
   	},
