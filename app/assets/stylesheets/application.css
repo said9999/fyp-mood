@@ -77,6 +77,36 @@
 	opacity: 0.8;
 }
 
+.sub-head{
+	text-align: center;
+	font-size: 42px;
+	font-weight: lighter;
+	padding-top: 100px;
+}
+
+.sub-content{
+	margin-top: 50px;
+}
+
+.intro-icon{
+	width: 80%;
+	height: auto;
+}
+
+.method-intro{
+	border: 2px solid;
+}
+
+.method-font{
+	color: #807a78;
+}
+
+.footer{
+	background-color:  #393938;
+	margin-bottom: -30px;
+	height: 100px;
+	margin-top: 150px;
+}
 /*********************
  	navigation bar css
  *********************/
