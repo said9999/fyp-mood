@@ -21,7 +21,11 @@
  	margin: 0 !important;
  }
 
-
+.logout{
+	color: white;
+	margin-top: 15px;
+	float: right;
+}
 /**********************
 	login page css
 **********************/
