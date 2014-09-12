@@ -10,10 +10,16 @@ Mood.Router.map(function() {
   this.route('panas',{path : '/utility/panas'});
   this.route('spane',{path : '/utility/spane'});
   this.route('pam',{path : '/utility/pam'});
+  this.route('sam',{path : '/utility/sam'});
+  
   this.route('panas-test',{path :'/panas-test'});
   this.route('spane-test',{path : '/spane-test'});
   this.route('pam-test', {path : '/pam-test'});
+  this.route('sam-test', {path : '/sam-test'});
+  
   this.route('graph',{path : '/history'});
-  this.route('submit_success',{path : '/submit_success'})
+  
+  this.route('submit_success',{path : '/submit_success'});
+
   this.route('',{path:'*path'})
 });
