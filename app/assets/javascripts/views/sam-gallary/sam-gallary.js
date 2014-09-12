@@ -1,35 +1,48 @@
 Mood.SAMView = Ember.View.extend({
 	templateName : 'sam-test/sam-test',
+
+	click : function(e){
+		var id = $(e.target).attr('id');
+		if (id != undefined && id.indexOf('sam-')>-1){
+			//alert('right');
+			var controller = this.get('controller');
+			controller.send('clickView',e.target);
+		}
+	},
 	
 	didInsertElement: function(){
+		//alert('here');
 		var controller = this.get('controller');
 		img_base = controller.get('img_base');
-		changePhotos(img_base);
 
-		$('#next').addClass("disabled");
+		controller.send('changePhotos',img_base);
+		controller.send('highlightPhoto',(img_base-1));
 
+		/*
 		$(".sam-img").click(function(){
-			$(".sam-img").css('border',"");
-			$(this).css('border',"10px solid #ff4256");
-			$('#next').removeClass("disabled");
+			$(".sam-img").removeClass('sam-highlight');
+			$(this).addClass('sam-highlight');
+		});*/
+
+		/*
+	
+		$("#next").click(function(){
+			img_base = controller.get('img_base');
+			updateScores(img_base-1);
+
+			controller.set('img_base',img_base+1);
+			img_base = controller.get('img_base');
+
+			changePhotos(img_base);
+			highlightPhoto(img_base-1);
 		});
 
-		$('#next').click(function()){
-			
-		}
-		
+		$("#back").click(function(){
+			alert('back');
+		});*/
+	
 	}
 });
 
-function changePhotos(base){
-	for (var i=1;i<6;i++){
-		var sam_root = '#sam-';
-		var sam_id = sam_root+i;
 
-		var img_src = "/assets/SAM/"+ base + "-" + i + ".jpg";
-
-		//alert(img_src);
-		$(sam_id).attr('src',img_src);
-	}
-}
 
