@@ -1,4 +1,4 @@
-var TypeUrlMap = {'PANAS':'/data_access/panas','SPANE':'/data_access/spane','PAM':'/data_access/pam'};
+var TypeUrlMap = {'PANAS':'/data_access/panas','SPANE':'/data_access/spane','PAM':'/data_access/pam','SAM':'/data_access/sam'};
 var GraphDrawMap = {'Line Chart':drawLineChart,'Pie Chart':drawPieChart};
 
 Mood.GraphController = Ember.ObjectController.extend({

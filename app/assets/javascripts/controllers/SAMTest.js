@@ -71,6 +71,22 @@ Mood.SamTestController = Ember.ObjectController.extend({
 
 		this.send('changePhotos',img_base);
 		this.send('highlightPhoto',(img_base-1));
+  	},
+
+  	submit : function(){
+  	  var score = 0;
+      for(var i=0;i<this.scores.length;i++){
+        score+= this.scores[i];
+      }
+
+      mail_addr = getCookie('email');
+
+      var that = this;
+      $.post('/data_update/sam',{total_score:score,email:mail_addr})
+        .done(function(){
+           alert('result submit successfully');
+           that.transitionToRoute('submit_success');
+        });
   	}
   }
 });
