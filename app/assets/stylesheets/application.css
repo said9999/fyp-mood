@@ -11,6 +11,7 @@
  *= require bootstrap.min
  *= require application
  *= require bootstrap-slider
+ *= require jqcloud
  */
 
 /*********************
@@ -25,6 +26,11 @@
 	color: white;
 	margin-top: 15px;
 	float: right;
+}
+
+body{
+	/*background-color: #1abc9c;*/
+	background-image: url("/assets/background/bg2.jpg");
 }
 /**********************
 	login page css
@@ -244,6 +250,21 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 	height: auto;
 }
 
+/**********************
+	GAMMA
+***********************/
+
+.intro-gamma{
+	font-size: 20px;
+	font-weight: 25;
+	color: #dbdbdb;
+	padding: 20px;
+	border-radius: 10px;
+}
+
+.gamma-photo{
+	margin-top: 30px;
+}
 /*
 .carousel-control.left, .carousel-control.right{ 
 	background: none !important; 

@@ -14,7 +14,7 @@ Mood.PamGalleryView = Ember.View.extend({
 
 		 function randomPhotos(){
 		 	var mySet = [];
-		 	var max=21;
+		 	var max=48;
 
 		 	while(mySet.length < 9){
 		 		var id = Math.random() * 10000 % max;

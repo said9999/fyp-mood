@@ -23,8 +23,8 @@
 
 //= require_tree .
 //= require bootstrap-slider
-
-
+//= require jqcloud-1.0.4.min
+//= require blur
 
 
 // for more details see: http://emberjs.com/guides/application/
