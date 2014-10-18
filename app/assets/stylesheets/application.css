@@ -30,7 +30,18 @@
 
 body{
 	/*background-color: #1abc9c;*/
-	background-image: url("/assets/background/bg2.jpg");
+	background-image: url("/assets/background/bg9.png");
+}
+
+.method-detail{
+	font-size: 20px;
+	font-weight: lighter;
+
+	margin-bottom: 20px;
+}
+
+.start-button{
+	margin-top: 20px;
 }
 /**********************
 	login page css
@@ -143,7 +154,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 
 .header 
 {
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #3D3737;
 }
 
 .page-title

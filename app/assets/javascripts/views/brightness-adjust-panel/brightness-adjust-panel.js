@@ -6,7 +6,7 @@ Mood.BrightnessAdjustPanel = Ember.View.extend({
 
     	$('.panel').blurjs({
     		source: 'body',
-			radius: 3
+			radius: 10
     	});
 	},
 

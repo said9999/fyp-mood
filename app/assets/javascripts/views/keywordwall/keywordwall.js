@@ -28,8 +28,8 @@ Mood.KeywordView = Ember.View.extend({
 	 			result.push(panas_array[pleasure_index]);
 	 			result.push(arouse_array[arouse_index]);
 
-	 			alert(panas_array[pleasure_index]);
-	 			alert(arouse_array[arouse_index]);
+	 			//alert(panas_array[pleasure_index]);
+	 			//alert(arouse_array[arouse_index]);
 
 	 			var offset = 1;
 	 			if (i%2 != 0){
@@ -38,13 +38,13 @@ Mood.KeywordView = Ember.View.extend({
 
 	 			offset = offset * Math.ceil((i+1)/2);
 
-	 			alert(offset);
+	 			//alert(offset);
 
 	 			arouse_index = a_pivot +  offset;
 	 			pleasure_index = p_pivot + offset;
 	 		}
 
-	 		alert(result);
+	 		//alert(result);
 	 		
 
 	 		var word_array = [];

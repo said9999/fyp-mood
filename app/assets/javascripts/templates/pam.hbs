@@ -1,11 +1,30 @@
 
-<row>
+<div class='row'>
   <div class='col-md-10 col-md-offset-1'>
   <div class="page-title">
     <h1 class="header">PAM</h1>
-  </div>
-</row>
 
-<row>
-  <div class="intro">{{#link-to 'pam-test' class="btn btn-lg btn-danger"}}Start{{/link-to}}</div>
-</row>
+    <div class="method-detail">
+    	<p>This work presents PAM, the Photographic Affect Meter, a novel tool for measuring affect in which users select from a wide variety of photos the one which best suits their current mood.</p>
+
+    	<p>In the system, users are shown a grid containing photos of varying subject matter, each in some way depicting an emotional state.</p>
+    </div>
+  </div>
+
+ 	<div class='row'>
+		<div class="col-md-3">
+			<select class="form-control" id='select'>
+			    <option value="1">Graphic Version</option>
+			    <option value="2">Keyword Version</option>
+			    
+			</select>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+	  		<div class="start-button"><button type="button" class="btn btn-danger btn-lg"{{action 'start'}}>Start</button></div>
+	  	</div>
+	</div>
+	</div>
+</div>
+
