@@ -69,10 +69,11 @@ Mood.PamGalleryView = Ember.View.extend({
 	 	 ********************/
 	 	 var that = this;
 	 	 $('.galleryPic').click(function(){
+
 	 	 	var src = $(this).attr('src');
 	 	 	var photo_id = src.split("/")[2].split(".")[0]; //src = assets/photos/3.jpg
 	 	 	
-	 	 	var score = photo_id*2;
+	 	 	var score = Math.floor(photo_id/3)+1;
 	 	 	var mail_addr = getCookie('email');
 
 	 	 	var controller = that.get('controller');
