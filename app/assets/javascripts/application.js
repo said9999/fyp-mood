@@ -25,7 +25,8 @@
 //= require bootstrap-slider
 //= require jqcloud-1.0.4.min
 //= require blur
-
+//= require jquery-ui-1.7.4
+//= require jquery.jcoverflip
 
 // for more details see: http://emberjs.com/guides/application/
 Mood = Ember.Application.create();
