@@ -27,6 +27,28 @@ Mood.TextTestView = Ember.View.extend({
 
 			$(mark_id).html("<u>"+ (6-mark) + "</u>");
 		});
-		
+
+		var that = this.get('controller');
+		$('#submit').click(function(){
+			mail_addr = getCookie('email');
+			var score = 0;
+			
+			for(var i=1;i<=10;i++){
+				var id = '#sl'+i;
+				var mark = $(id).slider('getValue');
+
+				if(i==3 || i==5 || i==8 || i==7 || i==10)
+					score = score + mark * 100;
+				else
+					score += mark
+			}
+			
+			$.post('/data_update/panas',{total_score:score,email:mail_addr})
+				.done(function(){
+					alert('result submit successfully');
+					that.transitionToRoute('submit_success');
+			});
+		});
+
 	}
 });
