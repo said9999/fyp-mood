@@ -7,19 +7,10 @@
                   
                   <div>{{tag}}</div>
                   
-                  <div style="width: 250px;" class="slider slider-horizontal" {{action 'changeBrightness' 'yes'}}>
-                        <div class="slider-track">
-                              <div style="left: 0%; width: 50%;" class="slider-selection"></div>
-                              <div style="left: 50%;" class="slider-handle round"></div>
-                              <div style="left: 0%;" class="slider-handle round hide"></div>
-                        </div>
-
-                        <div style="top: -40px; left: 23px;" class="tooltip top">
-                              <div class="tooltip-arrow"></div><div class="tooltip-inner">Current value: 5</div>
-                        </div>
-
-                        <input style="" class="span2" value="4" id="sl1" type="text">
+                  <div {{action 'changeBrightness' 'yes'}}>
+                        <input id="sl1" data-slider-id='ex2Slider' type="text" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="3" />
                   </div>
+                  
 
                   <div class="button-group">
                   	<div class='row'>

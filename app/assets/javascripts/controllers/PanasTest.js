@@ -4,7 +4,7 @@ Mood.PanasTestController = Ember.ObjectController.extend({
   imgRootUrl : "assets/panas_photos/",
   imgUrl : "assets/panas_photos/0.jpg", 
   tags : ['Upset','Hostile','Alert','Ashamed','Inspired','Nervous','Determined','Attentive','Afraid','Active'],
-  scores : [5,5,5,5,5,5,5,5,5,5],
+  scores : [3,3,3,3,3,3,3,3,3,3],
   
   progress_per : function(){
     per = (this.startIndex+1)/this.tags.length;
@@ -61,7 +61,11 @@ Mood.PanasTestController = Ember.ObjectController.extend({
     submitResult : function(){
       var score = 0;
       for(var i=0;i<this.scores.length;i++){
-        score+= this.scores[i];
+        if(i==2 || i==4 || i==7 || i==6 || i==9){
+          score = score + this.scores[i] * 100;
+        }else{
+          score+= this.scores[i];
+        }
       }
 
       mail_addr = getCookie('email');
@@ -76,15 +80,15 @@ Mood.PanasTestController = Ember.ObjectController.extend({
 
     changeBrightness : function(isFromTemplate){
       //$('#sl1').slider();
-
+      //alert('here');
       var value;
       var per;
       if(isFromTemplate == 'yes'){
         value = $('#sl1').slider('getValue');
-        per = value/10 + 0.5;
+        per = value/5 + 0.5;
       }else{
         value = this.scores[this.startIndex];
-        per = value/10 + 0.5;
+        per = value/5 + 0.5;
       }
 
       //alert(value);

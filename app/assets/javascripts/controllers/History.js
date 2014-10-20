@@ -14,7 +14,7 @@ Mood.GraphController = Ember.ObjectController.extend({
       var func = GraphDrawMap[$('#graph').val()];
       var email = getCookie('email');
 
-      dataLoad(url,func,email);
+      dataLoad($('#test').val(),url,func,email);
   	},
 
   	displayLineChart : function(){
@@ -27,33 +27,52 @@ Mood.GraphController = Ember.ObjectController.extend({
   }	
 });
 
-function dataLoad(url,drawChart,mail_addr){
+function dataLoad(type,url,drawChart,mail_addr){
 	$.post(url,{email:mail_addr})
 		.done(function(data){
-			drawChart(data['history']);
+			drawChart(type,data['history']);
 		});
 }
 
-function drawLineChart(data) {
-	var arrayData = [];
-	arrayData.push(['Time','Scores']);
+function drawLineChart(type,data) {
+  var arrayData = [];
+  var outdata;
+  var options;
 
-	for(var i=0;i<data.length;i++){
-		row = data[i];
-		time = row['time'];
-		score = row['score'];
+  if(type == 'PANAS'){
+    arrayData.push(['Time','PA','NA']);
+  	
+    for(var i=0;i<data.length;i++){
+  		row = data[i];
+  		time = row['time'];
+  		score = row['score'];
 
-		arrayData.push([time,score]);
-	}
+  		arrayData.push([time,Math.floor(score/100),score%100]);
+  	}
 
-	var data = google.visualization.arrayToDataTable(arrayData);
+    options = {
+      title: 'PANAS History Records'
+    };
+  }else if(type == 'PAM'){
+    arrayData.push(['Time','Score']);
+    
+    for(var i=0;i<data.length;i++){
+      row = data[i];
+      time = row['time'];
+      score = row['score'];
 
-	var options = {
-	  title: 'PANAS History Records'
-	};
+      arrayData.push([time,score]);
+    }
 
-	var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-	chart.draw(data, options);
+    options = {
+      title: 'PAM History Records'
+    };
+  }
+
+  outdata = google.visualization.arrayToDataTable(arrayData);
+  var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+  chart.draw(outdata, options);
+	
 };
 
 function drawPieChart(data){

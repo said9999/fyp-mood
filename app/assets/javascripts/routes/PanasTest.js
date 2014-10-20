@@ -6,6 +6,6 @@ Mood.PanasTestRoute = Ember.Route.extend({
   	//alert('in setup controller')
     controller.set('startIndex',0);
     controller.set('imgUrl','assets/panas_photos/0.jpg');
-    controller.set('scores',[5,5,5,5,5,5,5,5,5,5]);
+    controller.set('scores',[3,3,3,3,3,3,3,3,3,3]);
   }
 });
