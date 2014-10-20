@@ -43,6 +43,23 @@ body{
 .start-button{
 	margin-top: 20px;
 }
+
+/*********************
+	text test panel
+*********************/
+.p-mark{
+	font-size: 30px;
+	border: 1px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.mood-text{
+	font-size: 20px;
+	font-weight: lighter;
+	margin-top: 15px;
+	text-align: center;
+}
 /**********************
 	login page css
 **********************/

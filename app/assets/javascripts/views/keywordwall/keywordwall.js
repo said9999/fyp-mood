@@ -5,11 +5,14 @@ Mood.KeywordView = Ember.View.extend({
 	 	$('#ex1').slider();
 	 	$('#ex2').slider();   
 
+	 	$("#ex1Slider" + " .slider-selection").css("background", "#BABABA");
+	 	$("#ex2Slider" + " .slider-selection").css("background", "#BABABA");
+
 	 	//PA NA
 	 	var panas_array = ['Determined','Attentive','Inspired','Active','Afraid','Upset','Ashamed','Hostile'];
 	 	var arouse_array = ['Astonished','Fearful/Excited','Happy/Angry','Distressed','Defeated','Relaxed','Uninterested','Bored'];
 
-	 	$('.slider-track').on('click',function(){
+	 	$('.slider').on('click',function(){
 	 		//alert('click');
 	 		var arouse_val = $('#ex1').slider('getValue');
 	 		var pleasure_val = $('#ex2').slider('getValue');

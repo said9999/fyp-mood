@@ -13,6 +13,8 @@ Mood.Router.map(function() {
   this.route('sam',{path : '/utility/sam'});
   
   this.route('panas-test',{path :'/panas-test'});
+  this.route('panas-text-test',{path : '/panas-text-test'});
+
   this.route('spane-test',{path : '/spane-test'});
   this.route('pam-test', {path : '/pam-test'});
   this.route('sam-test', {path : '/sam-test'});
