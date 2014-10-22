@@ -278,6 +278,15 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 	height: auto;
 }
 
+.sam-test-font{
+	font-size: 20px;
+	font-weight: lighter;
+}
+
+.checkbox-inline, .checkbox {
+    margin-top: 8px !important;
+}
+
 /**********************
 	GAMMA
 ***********************/

@@ -1,5 +1,16 @@
 Mood.SamTestController = Ember.ObjectController.extend({
   img_base : 1,
+  queryParams: ['hi'],
+  hi: null,
+  gender: null,
+
+  photoFileBase : function(){
+    alert('big');
+    if(this.get('hi')=='a'){
+      alert('shit');
+    }
+    return null;
+  }.property('hi'),
 
   scores : [3,3,3],
 
@@ -27,7 +38,7 @@ Mood.SamTestController = Ember.ObjectController.extend({
 
 				//alert(img_src);
 				$(sam_id).attr('src',img_src);
-		}
+		  }
   	},
 
   	highlightPhoto : function(base){

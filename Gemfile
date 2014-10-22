@@ -5,7 +5,7 @@ gem 'faker'
 
 #ember js
 gem 'ember-rails'
-gem 'ember-source'
+gem 'ember-source', '~> 1.7.0'
 
 #rails slider
 gem 'bootstrap-slider-rails'

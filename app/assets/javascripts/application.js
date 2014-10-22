@@ -28,6 +28,8 @@
 
 
 // for more details see: http://emberjs.com/guides/application/
+Ember.FEATURES["query-params-new"] = true;
+this.ENV = {FEATURES: {'query-params-new': true}};
 Mood = Ember.Application.create();
 
 

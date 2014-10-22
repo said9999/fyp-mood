@@ -18,6 +18,10 @@ Mood.Router.map(function() {
   this.route('spane-test',{path : '/spane-test'});
   this.route('pam-test', {path : '/pam-test'});
   this.route('sam-test', {path : '/sam-test'});
+  this.route('sam-human-male-test', {path : '/sam-human-male-test'});
+  this.route('sam-human-female-test', {path : '/sam-human-female-test'});
+
+
   this.route('pam-keyword-test',{path : '/pam-keyword-test'});
   
   this.route('graph',{path : '/history'});
