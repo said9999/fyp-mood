@@ -1,16 +1,7 @@
 Mood.SamTestController = Ember.ObjectController.extend({
   img_base : 1,
-  queryParams: ['hi'],
-  hi: null,
-  gender: null,
-
-  photoFileBase : function(){
-    alert('big');
-    if(this.get('hi')=='a'){
-      alert('shit');
-    }
-    return null;
-  }.property('hi'),
+  photoFileBase : null,
+  suffix : null,
 
   scores : [3,3,3],
 
@@ -34,7 +25,7 @@ Mood.SamTestController = Ember.ObjectController.extend({
 				var sam_root = '#sam-';
 				var sam_id = sam_root+i;
 
-				var img_src = "/assets/SAM/"+ base + "-" + i + ".jpg";
+				var img_src = this.get('photoFileBase')+ base + "-" + i + this.get('suffix');
 
 				//alert(img_src);
 				$(sam_id).attr('src',img_src);
