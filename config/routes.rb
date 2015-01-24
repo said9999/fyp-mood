@@ -12,6 +12,8 @@ Mood::Application.routes.draw do
   match 'login', to: 'home#login', via: [:get]
 
   root to: 'home#index'
+
+  get '/download/:type', to:'data#download'
   get '*path',to: 'home#ember'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -17,6 +17,18 @@ Mood.GraphController = Ember.ObjectController.extend({
       dataLoad($('#test').val(),url,func,email);
   	},
 
+    download : function(){
+      var email = getCookie('email');
+      var url = "/download/" + $("#test").val().toLowerCase();
+
+      $.get(url, {email : email})
+        .done(function(data){
+          //alert(JSON.stringify(data['path']));
+          var ul = JSON.stringify(data['path']);
+          document.location.href = ul.substring(8,ul.length-1)
+        });
+    },
+
   	displayLineChart : function(){
 		  dataLoad(drawLineChart)
   	},
@@ -30,6 +42,7 @@ Mood.GraphController = Ember.ObjectController.extend({
 function dataLoad(type,url,drawChart,mail_addr){
 	$.post(url,{email:mail_addr})
 		.done(function(data){
+      alert(data['history']);
 			drawChart(type,data['history']);
 		});
 }
@@ -67,6 +80,20 @@ function drawLineChart(type,data) {
     options = {
       title: 'PAM History Records'
     };
+  }else if(type == 'SAM'){
+    arrayData.push(['Time','Pleasure','Arousal','Dominance']);
+    
+    for(var i=0;i<data.length;i++){
+      row = data[i];
+      time = row['time'];
+      score = row['score'];
+
+      arrayData.push([time,Math.floor(score/100),Math.floor(score/10)%10,score%10]);
+    }
+
+    options = {
+      title: 'SAM History Records'
+    };
   }
 
   outdata = google.visualization.arrayToDataTable(arrayData);
@@ -98,10 +125,12 @@ function drawPieChart(data){
       mood_great++;
   }
 
-  arrayData.push(['Low',mood_low]);
-  arrayData.push(['Normal',mood_normal]);
-  arrayData.push(['Good',mood_good]);
-  arrayData.push(['Great',mood_great]);
+  //alert('here');
+
+  arrayData.push(['Low',10]);
+  arrayData.push(['Normal',20]);
+  arrayData.push(['Good',15]);
+  arrayData.push(['Great',13]);
 
   //alert(arrayData);
 

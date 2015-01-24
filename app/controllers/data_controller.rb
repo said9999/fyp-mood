@@ -2,12 +2,16 @@
 
 class DataController < ApplicationController
 	require 'securerandom'
+	require 'prawn'
+	require 'prawn/table'
 
+
+	
 	def read
 		email = params[:email]
 		type = params[:type]
 
-		spane_history = History.where(email:email,test_type: type).order("time DESC")
+		spane_history = get_data_with_type(email, type)
 
 		render :json => {'history' => spane_history}
 	end
@@ -88,4 +92,54 @@ class DataController < ApplicationController
 		end
 	end
 
+	def download
+	  #send_file "/Users/Sai/Documents/workspace/RubySpace/mood/public/pam01242015.pdf"
+	  email = params[:email]
+	  type = params[:type]
+
+	  history = get_data_with_type(email, type)
+
+	  path = generate_PDF(history,type)
+
+	  render :json => {'path' => path}
+	end
+
+	def get_data_with_type(email, type)
+	  History.where(email:email,test_type: type).order("time DESC")
+	end
+
+	def generate_PDF(history,type)
+	  typeHeaderMap = {pam: ["grade","Date"], sam: ["Pleasure", "Arousal", "Dominance","Date"], panas: ["PA","NA","Date"]}
+	  puts 'prepare to render'
+	  pdf = Prawn::Document.new
+
+	  table = []
+	  headers = typeHeaderMap[type.to_sym]
+	  no_cols = headers.length
+
+	  factor = (type == 'sam') ? 10 : 100
+	  
+	  table.push(headers)
+	  history.each do |row|
+	  	tuple = []
+	  	grade = row['score'].to_i
+
+	  	(no_cols - 1).times do
+	  		tuple.unshift(grade % factor)
+	  		grade = grade / factor
+	  	end
+
+	  	tuple.push(row['time'])
+	  	
+	  	table.push(tuple)
+	  end
+	  
+	  pdf.table(table, header: true)
+	  name = type + Time.now.strftime("%m%d%Y")
+	  path = "public/#{name}.pdf"
+	  file_path = Rails.root.join('public',"#{name}.pdf")
+	  pdf.render_file(file_path)
+	  
+	  return path
+	end
 end

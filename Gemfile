@@ -1,5 +1,11 @@
 source 'http://rubygems.org'
 
+gem "thin"
+
+#prawn for pdf
+gem 'prawn'
+gem 'prawn-table'
+
 gem 'therubyracer'
 gem 'faker'
 

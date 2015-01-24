@@ -78,8 +78,11 @@ Mood.SamTestController = Ember.ObjectController.extend({
   	submit : function(){
   	  var score = 0;
       for(var i=0;i<this.scores.length;i++){
-        score+= this.scores[i];
+        score+= this.scores[i]*Math.pow(10,i);
+
       }
+
+      alert(score);
 
       mail_addr = getCookie('email');
 
