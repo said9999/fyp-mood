@@ -5,7 +5,7 @@ class DataController < ApplicationController
 	require 'prawn'
 	require 'prawn/table'
 
-
+	skip_before_action :verify_authenticity_token
 	
 	def read
 		email = params[:email]
@@ -88,7 +88,7 @@ class DataController < ApplicationController
 		unless user.nil?
 			render :json => {'valid'=>'yes'}
 		else
-			render :json => {'valid'=>no}
+			render :json => {'valid'=> 'no'}
 		end
 	end
 

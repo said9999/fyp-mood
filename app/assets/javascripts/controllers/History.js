@@ -62,10 +62,6 @@ function drawLineChart(type,data) {
 
   		arrayData.push([time,Math.floor(score/100),score%100]);
   	}
-
-    options = {
-      title: 'PANAS History Records'
-    };
   }else if(type == 'PAM'){
     arrayData.push(['Time','Score']);
     
@@ -76,10 +72,6 @@ function drawLineChart(type,data) {
 
       arrayData.push([time,score]);
     }
-
-    options = {
-      title: 'PAM History Records'
-    };
   }else if(type == 'SAM'){
     arrayData.push(['Time','Pleasure','Arousal','Dominance']);
     
@@ -90,12 +82,15 @@ function drawLineChart(type,data) {
 
       arrayData.push([time,Math.floor(score/100),Math.floor(score/10)%10,score%10]);
     }
-
-    options = {
-      title: 'SAM History Records'
-    };
   }
 
+  title = type + " History Records";
+
+  options = {
+    title: title,
+    curveType: 'function'
+  };
+  
   outdata = google.visualization.arrayToDataTable(arrayData);
   var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
   chart.draw(outdata, options);
