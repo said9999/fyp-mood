@@ -13,8 +13,10 @@ Mood.GraphController = Ember.ObjectController.extend({
       var url = TypeUrlMap[$('#test').val()];
       var func = GraphDrawMap[$('#graph').val()];
       var email = getCookie('email');
+      var startDate = $('#start_time').val();
+      var endDate = $('#end_time').val();
 
-      dataLoad($('#test').val(),url,func,email);
+      dataLoad($('#test').val(),url,func,email,startDate,endDate);
   	},
 
     download : function(){
@@ -39,10 +41,14 @@ Mood.GraphController = Ember.ObjectController.extend({
   }	
 });
 
-function dataLoad(type,url,drawChart,mail_addr){
-	$.post(url,{email:mail_addr})
+function dataLoad(type, url, drawChart, mail_addr, startDate, endDate){
+	$.post(url,{
+    email: mail_addr,
+    start: startDate,
+    end: endDate
+    })
 		.done(function(data){
-      alert(data['history']);
+      //alert(data['history']);
 			drawChart(type,data['history']);
 		});
 }
@@ -88,7 +94,9 @@ function drawLineChart(type,data) {
 
   options = {
     title: title,
-    curveType: 'function'
+    curveType: 'function',
+    vAxis: {title: 'Grade', viewWindowMode: "explicit", viewWindow:{ min: 0 }},
+    hAxis: {title: 'Date'},
   };
   
   outdata = google.visualization.arrayToDataTable(arrayData);

@@ -8,10 +8,12 @@ class DataController < ApplicationController
 	skip_before_action :verify_authenticity_token
 	
 	def read
-		email = params[:email]
-		type = params[:type]
-
-		spane_history = get_data_with_type(email, type)
+		spane_history = get_data_with_type_and_scale(
+		  params[:email], 
+		  params[:start], 
+		  params[:end], 
+		  params[:type]
+		)
 
 		render :json => {'history' => spane_history}
 	end
@@ -106,6 +108,57 @@ class DataController < ApplicationController
 
 	def get_data_with_type(email, type)
 	  History.where(email:email,test_type: type).order("time DESC")
+	end
+
+	def get_data_with_type_and_scale(email, start_time, ending_time, type)
+	  return get_data_with_type(email, type) if start_time.empty? && ending_time.empty?
+
+	  begin 
+	  	if start_time.empty?
+	  	  end_date = Date.strptime(ending_time, "%Y-%m-%d")
+
+	  	  return History.where(
+		    "email = ? AND test_type = ? AND time <= ?",
+		    email,
+		    type, 
+		    end_date
+		    )
+		    .order("time DESC")
+		elsif ending_time.empty?
+		  st_date = Date.strptime(start_time, "%Y-%m-%d")
+
+		  return History.where(
+		    "email = ? AND test_type = ? AND time >= ?",
+		    email,
+		    type, 
+		    st_date, 
+		    )
+		    .order("time DESC")
+		else
+		  st_date = Date.strptime(start_time, "%Y-%m-%d")
+		  end_date = Date.strptime(ending_time, "%Y-%m-%d")
+		  History.where(
+		  "email = ? AND test_type = ? AND time >= ? AND time <= ?",
+		  email,
+		  type, 
+		  st_date, 
+		  end_date
+		  )
+		  .order("time DESC")
+		end
+	  rescue
+	  	st_date = Date.strptime(start_time, "%Y-%m-%d")
+		end_date = Date.strptime(ending_time, "%Y-%m-%d")
+	  	
+	  	return  History.where(
+		  "email = ? AND test_type = ? AND time >= ? AND time <= ?",
+		  email,
+		  type, 
+		  st_date, 
+		  end_date
+		  )
+		  .order("time DESC")
+	  end
 	end
 
 	def generate_PDF(history,type)
