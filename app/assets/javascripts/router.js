@@ -22,6 +22,7 @@ Mood.Router.map(function() {
   this.route('sam-human-female-test', {path : '/sam-human-female-test'});
   this.route('sam-female-test', {path : '/sam-female-test'});
   this.route('sam-male-test', {path : '/sam-male-test'});
+  this.route('pad-test', {path : '/pad-test'});
 
   this.route('pam-keyword-test',{path : '/pam-keyword-test'});
   

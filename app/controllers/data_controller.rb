@@ -162,7 +162,13 @@ class DataController < ApplicationController
 	end
 
 	def generate_PDF(history,type)
-	  typeHeaderMap = {pam: ["grade","Date"], sam: ["Pleasure", "Arousal", "Dominance","Date"], panas: ["PA","NA","Date"]}
+	  typeHeaderMap = {
+	  	pam: ["grade","Date"],
+	  	sam: ["Pleasure", "Arousal", "Dominance","Date"],
+	  	panas: ["PA","NA","Date"],
+	  	pad: ["Pleasure", "Arousal", "Dominance","Date"]
+
+	  }
 	  puts 'prepare to render'
 	  pdf = Prawn::Document.new
 

@@ -1,4 +1,4 @@
-var TypeUrlMap = {'PANAS':'/data_access/panas','SPANE':'/data_access/spane','PAM':'/data_access/pam','SAM':'/data_access/sam'};
+var TypeUrlMap = {'PANAS':'/data_access/panas','SPANE':'/data_access/spane','PAM':'/data_access/pam','SAM':'/data_access/sam', 'PAD':'/data_access/pad'};
 var GraphDrawMap = {'Line Chart':drawLineChart,'Pie Chart':drawPieChart};
 
 Mood.GraphController = Ember.ObjectController.extend({
@@ -87,6 +87,16 @@ function drawLineChart(type,data) {
       score = row['score'];
 
       arrayData.push([time,Math.floor(score/100),Math.floor(score/10)%10,score%10]);
+    }
+  }else if(type == 'PAD'){
+    arrayData.push(['Time','Pleasure','Arousal','Dominance']);
+    
+    for(var i=0;i<data.length;i++){
+      row = data[i];
+      time = row['time'];
+      score = row['score'];
+      
+      arrayData.push([time,Math.floor(score%100),Math.floor(score/100)%100,Math.floor((score/10000)%100)]);
     }
   }
 
