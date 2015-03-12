@@ -30,7 +30,7 @@
 
 body{
 	/*background-color: #1abc9c;*/
-	background-image: url("/assets/background/bg9.png");
+	background-color: white;
 }
 
 .method-detail{
@@ -44,6 +44,13 @@ body{
 	margin-top: 20px;
 }
 
+/********************
+	index 
+*********************/
+.index-font{
+  font-size: 100px;
+  margin-top: 150px;
+}
 /*********************
 	text test panel
 *********************/
