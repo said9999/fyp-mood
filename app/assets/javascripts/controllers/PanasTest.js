@@ -92,6 +92,10 @@ Mood.PanasTestController = Ember.ObjectController.extend({
       }
 
       //alert(value);
+      if (this.startIndex == 0 || this.startIndex == 3) {
+        per = 1.6 - value/5;
+      };
+      //alert(value);
 
       $('#testPic').css("-webkit-filter","brightness(" + per + ")");
      // $('#testPic').css("filter","brightness(" + per + ")");
