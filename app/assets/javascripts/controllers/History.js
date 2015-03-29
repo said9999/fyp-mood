@@ -1,4 +1,4 @@
-var TypeUrlMap = {'PANAS':'/data_access/panas','SPANE':'/data_access/spane','PAM':'/data_access/pam','SAM':'/data_access/sam'};
+var TypeUrlMap = {'PANAS':'/data_access/panas','SPANE':'/data_access/spane','PAM':'/data_access/pam','SAM':'/data_access/sam', 'PAD':'/data_access/pad'};
 var GraphDrawMap = {'Line Chart':drawLineChart,'Pie Chart':drawPieChart};
 
 Mood.GraphController = Ember.ObjectController.extend({
@@ -13,9 +13,23 @@ Mood.GraphController = Ember.ObjectController.extend({
       var url = TypeUrlMap[$('#test').val()];
       var func = GraphDrawMap[$('#graph').val()];
       var email = getCookie('email');
+      var startDate = $('#start_time').val();
+      var endDate = $('#end_time').val();
 
-      dataLoad(url,func,email);
+      dataLoad($('#test').val(),url,func,email,startDate,endDate);
   	},
+
+    download : function(){
+      var email = getCookie('email');
+      var url = "/download/" + $("#test").val().toLowerCase();
+
+      $.get(url, {email : email})
+        .done(function(data){
+          //alert(JSON.stringify(data['path']));
+          var ul = JSON.stringify(data['path']);
+          document.location.href = ul.substring(8,ul.length-1)
+        });
+    },
 
   	displayLineChart : function(){
 		  dataLoad(drawLineChart)
@@ -27,33 +41,78 @@ Mood.GraphController = Ember.ObjectController.extend({
   }	
 });
 
-function dataLoad(url,drawChart,mail_addr){
-	$.post(url,{email:mail_addr})
+function dataLoad(type, url, drawChart, mail_addr, startDate, endDate){
+	$.post(url,{
+    email: mail_addr,
+    start: startDate,
+    end: endDate
+    })
 		.done(function(data){
-			drawChart(data['history']);
+      //alert(data['history']);
+			drawChart(type,data['history']);
 		});
 }
 
-function drawLineChart(data) {
-	var arrayData = [];
-	arrayData.push(['Time','Scores']);
+function drawLineChart(type,data) {
+  var arrayData = [];
+  var outdata;
+  var options;
 
-	for(var i=0;i<data.length;i++){
-		row = data[i];
-		time = row['time'];
-		score = row['score'];
+  if(type == 'PANAS'){
+    arrayData.push(['Time','PA','NA']);
+  	
+    for(var i=0;i<data.length;i++){
+  		row = data[i];
+  		time = row['time'];
+  		score = row['score'];
 
-		arrayData.push([time,score]);
-	}
+  		arrayData.push([time,Math.floor(score/100),score%100]);
+  	}
+  }else if(type == 'PAM'){
+    arrayData.push(['Time','Score']);
+    
+    for(var i=0;i<data.length;i++){
+      row = data[i];
+      time = row['time'];
+      score = row['score'];
 
-	var data = google.visualization.arrayToDataTable(arrayData);
+      arrayData.push([time,score]);
+    }
+  }else if(type == 'SAM'){
+    arrayData.push(['Time','Pleasure','Arousal','Dominance']);
+    
+    for(var i=0;i<data.length;i++){
+      row = data[i];
+      time = row['time'];
+      score = row['score'];
 
-	var options = {
-	  title: 'PANAS History Records'
-	};
+      arrayData.push([time,Math.floor(score/100),Math.floor(score/10)%10,score%10]);
+    }
+  }else if(type == 'PAD'){
+    arrayData.push(['Time','Pleasure','Arousal','Dominance']);
+    
+    for(var i=0;i<data.length;i++){
+      row = data[i];
+      time = row['time'];
+      score = row['score'];
+      
+      arrayData.push([time,Math.floor(score%100),Math.floor(score/100)%100,Math.floor((score/10000)%100)]);
+    }
+  }
 
-	var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-	chart.draw(data, options);
+  title = type + " History Records";
+
+  options = {
+    title: title,
+    curveType: 'function',
+    vAxis: {title: 'Grade', viewWindowMode: "explicit", viewWindow:{ min: 0 }},
+    hAxis: {title: 'Date'},
+  };
+  
+  outdata = google.visualization.arrayToDataTable(arrayData);
+  var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+  chart.draw(outdata, options);
+	
 };
 
 function drawPieChart(data){
@@ -79,10 +138,12 @@ function drawPieChart(data){
       mood_great++;
   }
 
-  arrayData.push(['Low',mood_low]);
-  arrayData.push(['Normal',mood_normal]);
-  arrayData.push(['Good',mood_good]);
-  arrayData.push(['Great',mood_great]);
+  //alert('here');
+
+  arrayData.push(['Low',10]);
+  arrayData.push(['Normal',20]);
+  arrayData.push(['Good',15]);
+  arrayData.push(['Great',13]);
 
   //alert(arrayData);
 

@@ -7,21 +7,27 @@
 			<div class="col-md-2 sidebar-menu">
 
 				<select class="form-control" style='margin-top:5px' id='test'>
-				  <option value="" selected disabled>Test Category</option>
+				  <option value="" selected disabled>Measurement</option>
+				  <option>PAD</option>
 				  <option>PAM</option>
-				  <option>SPANE</option>
 				  <option>PANAS</option>
 				  <option>SAM</option>
 				</select>
-
 				
 				<select class="form-control" style='margin-top:5px' id='graph'>
-				  <option value="" selected disabled>Graph Category</option>
+				  <option value="" selected disabled>Graph</option>
 				  <option>Line Chart</option>
 				  <option>Pie Chart</option>
 				</select>
 
-				<button type="button" class="btn btn-success btn-sm" style="margin-top:20px; float:right" {{action 'getGraph'}}>Go!</button>
+				<div>
+					<input type="text" placeholder="Start YYYY-MM-DD" style="width:100%;margin-top: 10px" id="start_time"></input>
+					<input type="text" placeholder="End   YYYY-MM-DD" style="width:100%" id="end_time"></input>
+				</div>
+
+				<button type="button" class="btn btn-success btn-block" style="margin-top:20px; float:right" {{action 'getGraph'}}>Go!</button>
+
+				<button type="button" class="btn btn-primary btn-block" style="float:right" {{action 'download'}}>Download</button>
 				
 			</div>
 			

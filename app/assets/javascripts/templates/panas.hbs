@@ -1,13 +1,36 @@
 
-<row>
+<div class='row'>
   <div class='col-md-10 col-md-offset-1'>
+
   <div class="page-title">
     <h1 class="header"> PANAS</h1>
-  </div>
-</row>
 
-<row>
-  <div class="intro">{{#link-to 'panas-test' class="btn btn-lg btn-danger"}}Start{{/link-to}}</div>
-</row>
+    <div class="method-detail">
+    	<p>PANAS stands for Positive and Negative Affect Schedule.</p>
+
+    	<p>In recent research, two broad, general factors--typically labeled Positive Affect (PA) and Negative Affect (NA)--have emerged reliably as the dominant dimensions of emotional experience. These factors have been identified in both intra- and interindividual analyses, and they emerge consistently across diverse descriptor sets, time frames, response formats, languages, and cultures.</p>
+    </div>
+
+    
+  </div>
+
+  <div class='row' style="margin-bottom:15px">
+    <div class="col-md-3">
+      <select class="form-control" id='select'>
+          <option value="1">Text Version</option>
+          <option value="2">Graphic Version</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="intro">
+    <div class="start-button"><button type="button" class="btn btn-danger btn-lg"{{action 'start'}}>Start</button></div>
+  </div>
+		
+
+	</div>
+</div>
+
+
 
   

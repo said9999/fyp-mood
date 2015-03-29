@@ -9,3 +9,6 @@
 //= require ./router
 //= require_tree ./routes
 //= require_self
+
+Ember.FEATURES['query-params-new'] = true;
+this.ENV = {FEATURES: {'query-params-new': true}};

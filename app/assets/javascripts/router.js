@@ -13,9 +13,17 @@ Mood.Router.map(function() {
   this.route('sam',{path : '/utility/sam'});
   
   this.route('panas-test',{path :'/panas-test'});
+  this.route('panas-text-test',{path : '/panas-text-test'});
+
   this.route('spane-test',{path : '/spane-test'});
   this.route('pam-test', {path : '/pam-test'});
   this.route('sam-test', {path : '/sam-test'});
+  this.route('sam-human-male-test', {path : '/sam-human-male-test'});
+  this.route('sam-human-female-test', {path : '/sam-human-female-test'});
+  this.route('sam-female-test', {path : '/sam-female-test'});
+  this.route('sam-male-test', {path : '/sam-male-test'});
+  this.route('pad-test', {path : '/pad-test'});
+
   this.route('pam-keyword-test',{path : '/pam-keyword-test'});
   
   this.route('graph',{path : '/history'});

@@ -6,5 +6,7 @@ Mood.SamTestRoute = Ember.Route.extend({
   	//alert('in setup controller')
     controller.set('img_base',1);
     controller.set('scores',[3,3,3]);
+    controller.set('photoFileBase','assets/SAM/Classic-SAM/');
+    controller.set('suffix',".jpg");
   }
 });

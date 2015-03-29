@@ -1,5 +1,7 @@
 Mood.SamTestController = Ember.ObjectController.extend({
   img_base : 1,
+  photoFileBase : null,
+  suffix : null,
 
   scores : [3,3,3],
 
@@ -23,11 +25,11 @@ Mood.SamTestController = Ember.ObjectController.extend({
 				var sam_root = '#sam-';
 				var sam_id = sam_root+i;
 
-				var img_src = "/assets/SAM/"+ base + "-" + i + ".jpg";
+				var img_src = this.get('photoFileBase')+ base + "-" + i + this.get('suffix');
 
 				//alert(img_src);
 				$(sam_id).attr('src',img_src);
-		}
+		  }
   	},
 
   	highlightPhoto : function(base){
@@ -76,8 +78,11 @@ Mood.SamTestController = Ember.ObjectController.extend({
   	submit : function(){
   	  var score = 0;
       for(var i=0;i<this.scores.length;i++){
-        score+= this.scores[i];
+        score+= this.scores[i]*Math.pow(10,i);
+
       }
+
+      alert(score);
 
       mail_addr = getCookie('email');
 

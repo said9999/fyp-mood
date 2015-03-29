@@ -43,7 +43,7 @@
 
 body{
 	/*background-color: #1abc9c;*/
-	background-image: url("/assets/background/bg9.png");
+	background-color: white;
 }
 
 .method-detail{
@@ -55,6 +55,30 @@ body{
 
 .start-button{
 	margin-top: 20px;
+}
+
+/********************
+	index 
+*********************/
+.index-font{
+  font-size: 100px;
+  margin-top: 150px;
+}
+/*********************
+	text test panel
+*********************/
+.p-mark{
+	font-size: 30px;
+	border: 1px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.mood-text{
+	font-size: 20px;
+	font-weight: lighter;
+	margin-top: 15px;
+	text-align: center;
 }
 /**********************
 	login page css
@@ -270,8 +294,17 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 }
 
 .sam-img{
-	width: 80%;
-	height: auto;
+	width: auto;
+	height: 200px;
+}
+
+.sam-test-font{
+	font-size: 20px;
+	font-weight: lighter;
+}
+
+.checkbox-inline, .checkbox {
+    margin-top: 8px !important;
 }
 
 /**********************

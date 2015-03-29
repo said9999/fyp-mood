@@ -1,11 +1,55 @@
 
-<row>
+<div class='row'>
   <div class='col-md-10 col-md-offset-1'>
-  <div class="page-title">
-    <h1 class="header"> SAM </h1>
-  </div>
-</row>
+		<div class="page-title">
+			<h1 class="header"> SAM </h1>
+		</div>
 
-<row>
-  <div class="intro">{{#link-to 'sam-test' class="btn btn-lg btn-danger"}}Start{{/link-to}}</div>
-</row>
+		<div class="panel panel-default" style="padding:15px">
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="optionsRadios1" value="1" checked style="margin-top:8px">
+			    <div class="sam-test-font">Classic</div>
+			  </label>
+			</div>
+		</div>
+
+		<div class="panel panel-default" style="padding:15px">
+			<div class="radio">
+				<label>
+					<input type="radio" name="optionsRadios" id="optionsRadios2" value="2" style="margin-top:8px">
+					<div class="sam-test-font">Advanced</div>
+				</label>
+			</div>
+
+			<div class="container-liquid" >
+				<div class="row" style="margin:5px">
+					<div class="col-md-9">
+						<div >
+						Manikin :
+						<select class="selectpicker" id='manikin'>
+							<option value="1">Human</option>
+							<option value="2">SAM</option>
+						</select>
+						</div>
+					 </div>
+				</div>
+
+				<div class="row" style="margin:5px" >
+					<div class="col-md-9" >
+						<div >
+						Gender :
+						<select class="selectpicker" id="gender">
+							<option value="1">Male</option>
+							<option value="2">Female</option>
+						</select>
+						</div>
+					 </div>
+				</div>
+			</div>
+		</div>
+							
+		<div class="start-button"><button type="button" class="btn btn-danger btn-lg"{{action 'start'}}>Start</button></div>
+  </div>
+</div>
+

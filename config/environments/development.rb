@@ -1,6 +1,7 @@
 Mood::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   #ember
+  
   config.ember.variant = :development
 
   # In the development environment your application's code is reloaded on
