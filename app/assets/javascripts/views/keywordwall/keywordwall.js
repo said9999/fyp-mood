@@ -1,7 +1,8 @@
 Mood.KeywordView = Ember.View.extend({
 	templateName : 'keywordview/keyword',
 
-	didInsertElement: function(){ 
+	didInsertElement: function(){
+		// value for PAM, the left side is the image index, the right hand side is the score 
 	 	var valueMap = {
 	 		11:1,
 	 		12:2,
@@ -22,6 +23,7 @@ Mood.KeywordView = Ember.View.extend({
 	 	};
 
 	 	var that = this;
+	 	// function handling clikcing submit button
 	 	$('#submit').on("click",function(){
 	 		var arouse_val = $('#ex1').slider('getValue');
 	 		var pleasure_val = $('#ex2').slider('getValue');
@@ -37,22 +39,21 @@ Mood.KeywordView = Ember.View.extend({
 	 	 		});
 	 	});
 
+	 	//enable slider for arousal and pleasure
 	 	$('#ex1').slider();
 	 	$('#ex2').slider();   
 
 	 	$("#ex1Slider" + " .slider-selection").css("background", "#BABABA");
 	 	$("#ex2Slider" + " .slider-selection").css("background", "#BABABA");
 
-	 	//PA NA
+	 	//keywrod chosen for PA & NA
 	 	var panas_array = ['Determined','Attentive','Inspired','Active','Afraid','Upset','Ashamed','Hostile'];
 	 	var arouse_array = ['Astonished','Fearful/Excited','Happy/Angry','Distressed','Defeated','Relaxed','Uninterested','Bored'];
 
-	 	//alert('click');
  		var arouse_val = $('#ex1').slider('getValue');
  		var pleasure_val = $('#ex2').slider('getValue');
- 		//alert(arouse_val);
- 		//alert(pleasure_val);
 
+ 		// map the value to the keywords
  		var a_pivot = 8 - arouse_val*2;
  		var p_pivot = 8 - pleasure_val*2;
  		var arouse_index = a_pivot;
@@ -65,9 +66,6 @@ Mood.KeywordView = Ember.View.extend({
  			result.push(panas_array[pleasure_index]);
  			result.push(arouse_array[arouse_index]);
 
- 			//alert(panas_array[pleasure_index]);
- 			//alert(arouse_array[arouse_index]);
-
  			var offset = 1;
  			if (i%2 != 0){
  				offset *= -1;	
@@ -75,14 +73,9 @@ Mood.KeywordView = Ember.View.extend({
 
  			offset = offset * Math.ceil((i+1)/2);
 
- 			//alert(offset);
-
  			arouse_index = a_pivot +  offset;
  			pleasure_index = p_pivot + offset;
  		}
-
- 		//alert(result);
- 		
 
  		var word_array = [];
  		var weight = 32;
@@ -92,8 +85,7 @@ Mood.KeywordView = Ember.View.extend({
  			weight -= 2;
  		}
 
- 		//alert(word_array);
-
+ 		// default keywords wall with arousal 3 and pleasure 3
  		$("#chart").empty();
  		var red = 'red';
  		var color_list = ["red","red","red","red","red","red","red","red","red","red"];
@@ -101,12 +93,10 @@ Mood.KeywordView = Ember.View.extend({
  			colors : color_list
  		});
  		
+ 		// change the keywords when value of sliders also changes
 	 	$('.slider').on('click',function(){
-	 		//alert('click');
 	 		var arouse_val = $('#ex1').slider('getValue');
 	 		var pleasure_val = $('#ex2').slider('getValue');
-	 		//alert(arouse_val);
-	 		//alert(pleasure_val);
 
 	 		var a_pivot = 8 - arouse_val*2;
 	 		var p_pivot = 8 - pleasure_val*2;
@@ -120,9 +110,6 @@ Mood.KeywordView = Ember.View.extend({
 	 			result.push(panas_array[pleasure_index]);
 	 			result.push(arouse_array[arouse_index]);
 
-	 			//alert(panas_array[pleasure_index]);
-	 			//alert(arouse_array[arouse_index]);
-
 	 			var offset = 1;
 	 			if (i%2 != 0){
 	 				offset *= -1;	
@@ -130,14 +117,9 @@ Mood.KeywordView = Ember.View.extend({
 
 	 			offset = offset * Math.ceil((i+1)/2);
 
-	 			//alert(offset);
-
 	 			arouse_index = a_pivot +  offset;
 	 			pleasure_index = p_pivot + offset;
 	 		}
-
-	 		//alert(result);
-	 		
 
 	 		var word_array = [];
 	 		var weight = 32;
@@ -146,8 +128,6 @@ Mood.KeywordView = Ember.View.extend({
 	 			word_array.push({text:content,weight:weight});
 	 			weight -= 2;
 	 		}
-
-	 		//alert(word_array);
 
 	 		$("#chart").empty();
 	 		var red = 'red';

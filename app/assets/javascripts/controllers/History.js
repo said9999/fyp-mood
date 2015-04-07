@@ -1,4 +1,10 @@
+/*
+* History page logic
+*/
+
+// route and measurement type hashmap
 var TypeUrlMap = {'PANAS':'/data_access/panas','SPANE':'/data_access/spane','PAM':'/data_access/pam','SAM':'/data_access/sam', 'PAD':'/data_access/pad'};
+// graph type and funciton map
 var GraphDrawMap = {'Line Chart':drawLineChart,'Pie Chart':drawPieChart};
 
 Mood.GraphController = Ember.ObjectController.extend({
@@ -6,6 +12,7 @@ Mood.GraphController = Ember.ObjectController.extend({
   graph_type : "",
 
   actions : {
+    // retrieve graph from server side
   	getGraph : function(){
   		this.set('test_type',$('#test').val());
   		this.set('graph_type',$('#graph').val());
@@ -19,22 +26,24 @@ Mood.GraphController = Ember.ObjectController.extend({
       dataLoad($('#test').val(),url,func,email,startDate,endDate);
   	},
 
+    // download graph result for certain scale
     download : function(){
       var email = getCookie('email');
       var url = "/download/" + $("#test").val().toLowerCase();
 
       $.get(url, {email : email})
         .done(function(data){
-          //alert(JSON.stringify(data['path']));
           var ul = JSON.stringify(data['path']);
           document.location.href = ul.substring(8,ul.length-1)
         });
     },
 
+    // draw line chart
   	displayLineChart : function(){
 		  dataLoad(drawLineChart)
   	},
 
+    // draw pie chart
   	displayPieChart : function(){
   		drawPieChart();
   	}
@@ -48,16 +57,17 @@ function dataLoad(type, url, drawChart, mail_addr, startDate, endDate){
     end: endDate
     })
 		.done(function(data){
-      //alert(data['history']);
 			drawChart(type,data['history']);
 		});
 }
 
+// google chart used here
 function drawLineChart(type,data) {
   var arrayData = [];
   var outdata;
   var options;
 
+  // split one score into several dimensions according to different type
   if(type == 'PANAS'){
     arrayData.push(['Time','PA','NA']);
   	
@@ -126,7 +136,6 @@ function drawPieChart(data){
   for(var i=0;i<data.length;i++){
     row = data[i];
     score = row['score'];
-    //alert(score);
 
     if(score < 20)
       mood_low++;
@@ -138,14 +147,10 @@ function drawPieChart(data){
       mood_great++;
   }
 
-  //alert('here');
-
   arrayData.push(['Low',10]);
   arrayData.push(['Normal',20]);
   arrayData.push(['Good',15]);
   arrayData.push(['Great',13]);
-
-  //alert(arrayData);
 
 	var data = google.visualization.arrayToDataTable(arrayData);
 

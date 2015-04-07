@@ -1,3 +1,6 @@
+/*************************
+* PANAS utility page logic
+**************************/
 Mood.PanasController = Ember.ObjectController.extend({
 	actions : {
 		start : function(){

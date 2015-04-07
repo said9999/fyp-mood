@@ -2,6 +2,9 @@ Mood.TextTestView = Ember.View.extend({
 	templateName : 'text-test-view/text-test',
 
 	didInsertElement: function(){
+		// after loading text-based panas test
+
+		// enable sliders for 10 panas measurement items
 		for (var i=1;i<=10;i++){
 			var id = "#sl" + i;
 			$(id).slider();
@@ -10,24 +13,20 @@ Mood.TextTestView = Ember.View.extend({
 
 			var data_id = "#text-sl" + i;
 			$(data_id + " .slider-selection").css("background", "#BABABA");
-
-
 		}
 
+		// after changing the value of sliders, the number of indicator also changes
 		$('.slider-vertical').click(function(){
 			var id = $(this).attr('id');
 			id = id.split("-")[1];
 
 			var mark_id = "#mark" + id.split('l')[1];
-
-			//alert(mark_id);
-
 			var mark = $("#"+id).slider('getValue');
-			//alert(mark);
 
 			$(mark_id).html("<u>"+ (6-mark) + "</u>");
 		});
 
+		// action after clicking the submit button
 		var that = this.get('controller');
 		$('#submit').click(function(){
 			mail_addr = getCookie('email');

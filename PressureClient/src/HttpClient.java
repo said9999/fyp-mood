@@ -8,10 +8,13 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
-
+/***************************
+* This class only handle score submiting to the server
+***************************/
 public class HttpClient {
 	private static String host = "http://localhost:3000/data_update/sensor/";
 	
+
 	public void submit(final HashMap<State, Integer> scores, final String email, final String password ) throws UnsupportedEncodingException {
 		String urlParams = compositeUrlString(new HashMap<String, String>(){{
 						     					put("total_score",compositeScore(scores));
@@ -25,6 +28,7 @@ public class HttpClient {
 		System.out.println("submit successfully");
 	}
 	
+	// combine three dimension into one score
 	public static String compositeScore(HashMap<State, Integer> scores) {
 		int P = scores.get(State.Pleasure);
 		int A = scores.get(State.Arousal);

@@ -1,5 +1,9 @@
+/*************************
+* Application logic for main page
+**************************/
 Mood.ApplicationController = Ember.ObjectController.extend({
 	actions: {
+        // log out handling
 		logout : function(){
 			setCookie('email','',1);
 			setCookie('access_key','',1);

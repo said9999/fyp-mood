@@ -32,7 +32,7 @@ Ember.FEATURES["query-params-new"] = true;
 this.ENV = {FEATURES: {'query-params-new': true}};
 Mood = Ember.Application.create();
 
-
+// global helper functions for write and read cookies
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));

@@ -1,5 +1,6 @@
-
-
+##############################
+# this controller only handle data requesting, do not render any pages
+##############################
 class DataController < ApplicationController
 	require 'securerandom'
 	require 'prawn'
@@ -7,6 +8,7 @@ class DataController < ApplicationController
 
 	skip_before_action :verify_authenticity_token
 	
+	# return full history data according to scale type
 	def read
 		spane_history = get_data_with_type_and_scale(
 		  params[:email], 
@@ -18,6 +20,7 @@ class DataController < ApplicationController
 		render :json => {'history' => spane_history}
 	end
 
+	# update the new coming score into the system
 	def update
 		mail_addr = params[:email]
 		score = params[:total_score]
@@ -40,8 +43,8 @@ class DataController < ApplicationController
 		render status: 200,json: {'msg' => 'success'}
 	end
 
+	# check if user valid when sign in
 	def sign_in
-		puts "sign in!!!!"
 		email = params[:email]
 		psw = params[:psw]
 
@@ -95,7 +98,6 @@ class DataController < ApplicationController
 	end
 
 	def download
-	  #send_file "/Users/Sai/Documents/workspace/RubySpace/mood/public/pam01242015.pdf"
 	  email = params[:email]
 	  type = params[:type]
 

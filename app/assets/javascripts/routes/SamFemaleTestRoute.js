@@ -1,7 +1,7 @@
 Mood.SamFemaleTestRoute = Ember.Route.extend({
 
 	renderTemplate : function(){
-		//alert('here');
+		// pre-set up for sam test
 		var controller = this.controllerFor('samTest');
 		controller.set('photoFileBase','assets/SAM/SAM-FEMALE/');
 		controller.set('img_base',1);

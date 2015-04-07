@@ -1,8 +1,11 @@
+<!--********************
+   SAM Test Page
+***********************-->
 <div class="container">
 	<div class="panel panel-default" style="padding-bottom:100px">
 		<div class='row' style="margin-top:150px">
 			
-
+			<!-- Image Groups -->
 			<div class="col-md-2 col-md-offset-1">
 				<img id='sam-1' class="sam-img" {{action 'clickView'}}>
 			</div>
@@ -24,37 +27,33 @@
 			</div>
 		</div>
 
+		<!-- Button Group Controls with handlebar template -->
 		<div class="row" style="margin-top:30px">
-			
-						
-							{{#if firstPage}}
-								<div class="col-md-2 col-md-offset-5">
-									<button type="button" id="next" class="btn btn-default btn-block" {{action 'next'}}>Next</button>
-								</div>
-							{{else}}
-								{{#unless lastPage}}
-									<div class="col-md-2 col-md-offset-4">
-										<button type="button" id="back" class="btn btn-default btn-block" {{action 'back'}}>Back</button>
-									</div>
+			{{#if firstPage}}
+				<div class="col-md-2 col-md-offset-5">
+					<button type="button" id="next" class="btn btn-default btn-block" {{action 'next'}}>Next</button>
+				</div>
+			{{else}}
+				{{#unless lastPage}}
+					<div class="col-md-2 col-md-offset-4">
+						<button type="button" id="back" class="btn btn-default btn-block" {{action 'back'}}>Back</button>
+					</div>
 
-									<div class="col-md-2">
-										<button type="button" id="next" class="btn btn-default btn-block"{{action 'next'}}>Next</button>
-									</div>
-									
-								{{else}}
-									<div class="col-md-2 col-md-offset-4">
-										<button type="button" id="back" class="btn btn-default btn-block" {{action 'back'}}>Back</button>
-									</div>
+					<div class="col-md-2">
+						<button type="button" id="next" class="btn btn-default btn-block"{{action 'next'}}>Next</button>
+					</div>
+					
+				{{else}}
+					<div class="col-md-2 col-md-offset-4">
+						<button type="button" id="back" class="btn btn-default btn-block" {{action 'back'}}>Back</button>
+					</div>
 
-									<div class="col-md-2">
-										<button type="button" id="submit" class="btn btn-primary btn-block"{{action 'submit'}}>Submit</button>
-									</div>
-									
-								{{/unless}}
-							{{/if}}
-
-							
-
+					<div class="col-md-2">
+						<button type="button" id="submit" class="btn btn-primary btn-block"{{action 'submit'}}>Submit</button>
+					</div>
+					
+				{{/unless}}
+			{{/if}}
 		</div>
 	</div>
 </div>

@@ -1,3 +1,6 @@
+/*************************
+* Default Sam Utility logic
+**************************/
 Mood.SamController = Ember.ObjectController.extend({
 	actions : {
 		start : function(){
@@ -8,9 +11,6 @@ Mood.SamController = Ember.ObjectController.extend({
  			}else{
  				var category = $("#manikin").val();
  				var gender = $("#gender").val();
-
- 				//alert(category);
- 				//alert(gender);
 
  				if(category == 1)
  					if (gender == 1)

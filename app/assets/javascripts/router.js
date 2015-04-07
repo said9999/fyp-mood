@@ -4,9 +4,9 @@ Mood.Router.reopen({
 	rootURL : '/'
 })
 
+// single page routes. This is different from the default ruby routes. 
+// The ruby route is in config/routes.rb
 Mood.Router.map(function() {
-  // this.resource('posts');
-  //alert('in the router.js');
   this.route('panas',{path : '/utility/panas'});
   this.route('spane',{path : '/utility/spane'});
   this.route('pam',{path : '/utility/pam'});

@@ -1,9 +1,14 @@
+/*************************
+* PANAS test page logic
+**************************/
 Mood.PanasTestController = Ember.ObjectController.extend({
   //initial value
   startIndex : 0,
   imgRootUrl : "assets/panas_photos/",
   imgUrl : "assets/panas_photos/0.jpg", 
+  // chosen words for panas
   tags : ['Upset','Hostile','Alert','Ashamed','Inspired','Nervous','Determined','Attentive','Afraid','Active'],
+  // default score for 10 items
   scores : [3,3,3,3,3,3,3,3,3,3],
   
   progress_per : function(){
@@ -32,10 +37,8 @@ Mood.PanasTestController = Ember.ObjectController.extend({
   }.property('startIndex'),
 
   actions: {
+    // handleing how to change page
     changeTest : function(sign){
-      //alert(sign);
-      //alert(this.startIndex);
-
       var offset;
       
       if(sign == '+')
@@ -58,6 +61,7 @@ Mood.PanasTestController = Ember.ObjectController.extend({
       this.send('changeBrightness','no')
     },
 
+    // submit action handling
     submitResult : function(){
       var score = 0;
       for(var i=0;i<this.scores.length;i++){
@@ -78,9 +82,8 @@ Mood.PanasTestController = Ember.ObjectController.extend({
         });
     },
 
+    // changes the photo's brightness when the slider is changed
     changeBrightness : function(isFromTemplate){
-      //$('#sl1').slider();
-      //alert('here');
       var value;
       var per;
       if(isFromTemplate == 'yes'){
@@ -91,14 +94,12 @@ Mood.PanasTestController = Ember.ObjectController.extend({
         per = value/5 + 0.5;
       }
 
-      //alert(value);
       if (this.startIndex == 0 || this.startIndex == 3) {
         per = 1.6 - value/5;
       };
-      //alert(value);
 
+      // tested on chrome
       $('#testPic').css("-webkit-filter","brightness(" + per + ")");
-     // $('#testPic').css("filter","brightness(" + per + ")");
     }
   }
 

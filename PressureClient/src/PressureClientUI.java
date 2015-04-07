@@ -10,7 +10,9 @@ import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
-
+/********************
+* This class only have ui codes for mood client
+*********************/
 public class PressureClientUI {
 
 	protected Shell shell;
@@ -60,6 +62,7 @@ public class PressureClientUI {
 
 	/**
 	 * Create contents of the window.
+	 * pure UI codes
 	 */
 	protected void createContents() {
 		shell = new Shell();

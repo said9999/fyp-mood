@@ -1,17 +1,23 @@
+<!--********************
+   The brightness test  panel for PANAS
+***********************-->
 <div class='row'>
 	<div class="panas-test-panel col-md-10 col-md-offset-1">
 		<div class="panel panel-default" align="center" class="overlay">
-			<div class='overlay'>
+			<!-- Photo -->
+
+                  <div class='overlay'>
 				<img id='testPic' {{bind-attr src="imgUrl"}} class="img-circle test-photos">
 			</div>
                   
                   <div>{{tag}}</div>
                   
+                  <!-- Slider -->
                   <div {{action 'changeBrightness' 'yes'}}>
                         <input id="sl1" data-slider-id='ex2Slider' type="text" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="3" />
                   </div>
                   
-
+                  <!-- Next, Previous, and Submit Buttons Control-->
                   <div class="button-group">
                   	<div class='row'>
                   		<div>
@@ -26,13 +32,12 @@
                               {{else}}
                                     <button id="nextBtn" {{action 'submitResult'}} class="control-btn btn btn-info">Submit</button>
                               {{/unless}}
-                              
-                              
                   		</div>
                   	</div>
                   </div>
 		</div>
-
+            
+            <!-- Progress Bar-->
             <div class="test-progressbar"> 
                   <div class="progress">
                         <div id='test-progress' class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" {{bind-attr style="progress_per"}}>

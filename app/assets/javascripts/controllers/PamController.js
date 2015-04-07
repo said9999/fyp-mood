@@ -1,3 +1,6 @@
+/*************************
+* Pam utility page logic
+**************************/
 Mood.PamController = Ember.ObjectController.extend({
   actions : {
   	start : function(){

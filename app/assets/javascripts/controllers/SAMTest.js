@@ -1,8 +1,11 @@
+/*************************
+* Default Sam test logic
+**************************/
 Mood.SamTestController = Ember.ObjectController.extend({
   img_base : 1,
   photoFileBase : null,
   suffix : null,
-
+  // default sam scores for three dimensions
   scores : [3,3,3],
 
   firstPage : function(){

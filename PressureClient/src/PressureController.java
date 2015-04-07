@@ -5,6 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
+/*****************************
+* This class handle the logic with user interaction
+*******************************/
 public class PressureController {
 	//properties
 	public String email;
@@ -21,12 +24,14 @@ public class PressureController {
 		httpClient = new HttpClient();
 	}
 
+	// run preset sh file to connect the logfile with serial port
 	public void setup() throws IOException {
 		Runtime.getRuntime().exec("rm outputdata");
 		Runtime.getRuntime().exec("touch outputdata");
 		Runtime.getRuntime().exec("sh init.sh");
 	}
 	
+	// finish current dimension testing and move to next state
 	public void next(PressureClientUI clientInterface) throws IOException {
 		Image img;
 		
@@ -88,6 +93,7 @@ public class PressureController {
 		}
 	}
 	
+	// start measuring users pressure with a background thread, with 3 seconds count down
 	public void test(final PressureClientUI clientInterface) throws IOException{
 		clientInterface.remindInfo.setText("Press the Sensor");
 		
@@ -110,6 +116,7 @@ public class PressureController {
 			}
 		};
 		
+		// count down
 		class MyRunnable implements Runnable {
 			  private long down;
 			  public MyRunnable(long l) {
@@ -121,6 +128,7 @@ public class PressureController {
 			  }
 		}
 
+		// read data from logfile and calculate the average score
 		class PressureListenThread extends Thread {
 			PressureClientUI clientInterface;
 			Runnable completeRunnable;
@@ -158,6 +166,7 @@ public class PressureController {
 		(new PressureListenThread(clientInterface, completeRunnable)).start();
 	}
 
+	// read the score from the logfile to calculate average score within 3 sec
 	static public int calculateScore() throws IOException {
 		int score = 0;
 		int count = 0;
