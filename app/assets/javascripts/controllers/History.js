@@ -1,12 +1,13 @@
-/*
+/*************************
 * History page logic
-*/
+**************************/
 
 // route and measurement type hashmap
 var TypeUrlMap = {'PANAS':'/data_access/panas','SPANE':'/data_access/spane','PAM':'/data_access/pam','SAM':'/data_access/sam', 'PAD':'/data_access/pad'};
 // graph type and funciton map
 var GraphDrawMap = {'Line Chart':drawLineChart,'Pie Chart':drawPieChart};
-
+// score map for PAD, SAM
+var PADScoreMap = {'+++':'Exuberant', '---':'Bord', '++-':'Dependent', '--+':'Disdianful', '+-+':'Relaxed', '-+-':'Anxious', '+--':'Docile', '-++':'Hostile'}
 Mood.GraphController = Ember.ObjectController.extend({
   test_type : "",
   graph_type : "",
@@ -40,6 +41,7 @@ Mood.GraphController = Ember.ObjectController.extend({
 
     // draw line chart
   	displayLineChart : function(){
+      alert('here');
 		  dataLoad(drawLineChart)
   	},
 
@@ -125,35 +127,67 @@ function drawLineChart(type,data) {
 	
 };
 
-function drawPieChart(data){
+function drawPieChart(type, data){
   var arrayData = [];
+  var status;
   arrayData.push(['Mood','frequency']);
+  if (type == 'PAD' || type == 'SAM') {
+      status = {'Exuberant':0, 'Bord':0, 'Dependent':0, 'Disdianful':0, 'Relaxed':0, 'Anxious':0, 'Docile':0, 'Hostile':0};
+      for (var i = 0; i < data.length; i++) {
+        var score = data[i]['score'];
+        var mod = (type == 'PAD') ? 100 : 10;
+        //alert(mod);
+        var p = score % mod;
+        var a = Math.floor(score / mod) % mod;
+        var d = Math.floor(score / mod / mod) % mod;
+        var hold = (type == 'PAD') ? 5 : 3;
+        p = (p > hold) ? '+' : '-';
+        a = (a > hold) ? '+' : '-';
+        d = (d > hold) ? '+' : '-';
 
-  var mood_low = 0; // <20)
-  var mood_normal = 0; //[20-30)
-  var mood_good = 0; //[30-40)
-  var mood_great = 0; //[40-50)
-  for(var i=0;i<data.length;i++){
-    row = data[i];
-    score = row['score'];
-
-    if(score < 20)
-      mood_low++;
-    else if (score>=20 && score<30)
-      mood_normal++;
-    else if (score>=30 && score<40)
-      mood_good++;
-    else if (score>=40)
-      mood_great++;
+        var key = p + a + d;
+        //alert(key);
+        var _type = PADScoreMap[key];
+        //alert(type);
+        status[_type] = status[_type] + 1; 
+      }
+  } else if (type == 'PANAS' || type == 'PAM') {
+      status = {'Well':0, 'Low PA':0, 'High NA':0, 'Low PA and High NA':0};
+      for (var i = 0; i < data.length; i++) {
+        var score = data[i]['score'];
+        if (type == 'PANAS') {
+          var pa = Math.floor(score / 100);
+          var na = score % 100;
+          if (pa >= 14 && na <= 9) {
+            status['Well'] = status['Well'] + 1;
+          } else if (pa < 14 && na > 9) {
+            status['Low PA and High NA'] = status['Low PA and High NA'] + 1;
+          } else if (pa < 14) {
+            status['Low PA'] = status['Low PA'] + 1;
+          } else {
+            status['High NA'] = status['High NA'] + 1;
+          }
+        } else {
+          if (score <= 4) {
+            status['Low PA'] = status['Low PA'] + 1;
+          } else if (score >= 13) {
+            status['High NA'] = status['High NA'] + 1;
+          } else if (score <= 8) {
+            status['Low PA and High NA'] = status['Low PA and High NA'] + 1;
+          } else {
+            status['Well'] = status['Well'] + 1;
+          }
+        }
+      }
+  }
+  
+  for (var key in status) {
+    if (status.hasOwnProperty(key)) {
+      arrayData.push([key, status[key]]);
+    }
   }
 
-  arrayData.push(['Low',10]);
-  arrayData.push(['Normal',20]);
-  arrayData.push(['Good',15]);
-  arrayData.push(['Great',13]);
-
-	var data = google.visualization.arrayToDataTable(arrayData);
-
+  var data = google.visualization.arrayToDataTable(arrayData);
   var options = {
     title: 'My Daily Mood'
   };
