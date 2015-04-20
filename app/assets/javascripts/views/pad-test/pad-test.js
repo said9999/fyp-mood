@@ -17,7 +17,16 @@ Mood.PADTestView = Ember.View.extend({
       active_obj = $(this);
       active_obj.addClass('active');
 
-      $('#display_image').attr('src', "/assets/pad/" + active_obj.attr("id") + ".jpg");
+      $('#display_image').attr('src', "/assets/pad/" + active_obj.attr("id")+ "_image_1" + ".jpg");
+    });
+
+    // handle click image 
+    $('#display_image').on('click', function() {
+      index = parseInt($('#display_image').attr('src').split('_')[2][0]);
+      next_index = index % 8 + 1;
+
+      src = "/assets/pad/" + active_obj.attr("id")+ "_image_" + next_index + ".jpg";
+      $(this).attr('src', src);
     });
 
     // introduction
